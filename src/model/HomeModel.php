@@ -5,6 +5,4 @@ class HomeModel {
     public function getWelcomeMessage() {
         return "Bienvenue au département informatique";
     }
-
-
 }

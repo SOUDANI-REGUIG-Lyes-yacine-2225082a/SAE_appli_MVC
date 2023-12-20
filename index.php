@@ -16,6 +16,18 @@ switch ($action) {
         $controller = new choixRoueController();
         $controller->displayRoue();
         break;
+    case 'but1':
+        $controller = new choixRoueController();
+        $controller->displayBut1();
+        break;
+    case 'but2':
+        $controller = new choixRoueController();
+        $controller->displayBut2();
+        break;
+    case 'but3':
+        $controller = new choixRoueController();
+        $controller->displayBut3();
+        break;
 
     // Ajoutez d'autres cas pour d'autres actions ici
     default:
@@ -27,16 +39,11 @@ switch ($action) {
         break;
 
 
-
-    /*
-     * affichage 2eme page avec roue pour choix des groupes etc ...
     $controller = new choixRoueController();
-    $controller->displayHome();
-    */
-    /*
-     * affichage tableau emploie du temps
+    $controller->displayRoue();
+
     $controller = new ScheduleController();
     $controller->handleRequest_Tab();
-    */
+
 }
 ?>

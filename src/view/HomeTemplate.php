@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Accueil</title>
-    <link rel="icon" type="image/png" href="_assets/images/favicon.png">
-    <link rel="stylesheet" href="_assets/styles/PageCommune.css">
-    <link rel="stylesheet" href="_assets/styles/AcceuilStyle.css">
+    <link rel="icon" type="image/png" href="../../_assets/images/favicon.png">
+    <link rel="stylesheet" href="../../_assets/styles/PageCommune.css">
+    <link rel="stylesheet" href="../../_assets/styles/AcceuilStyle.css">
 </head>
 <body>
-<script src="_assets/scripts/toggleImage.js"></script>
-<script src="_assets/scripts/HideText.js"></script>
-<script src="_assets/scripts/main.js"></script>
+<script src="../../_assets/scripts/toggleImage.js"></script>
+<script src="../../_assets/scripts/HideText.js"></script>
+<script src="../../_assets/scripts/main.js"></script>
 
 <div class="container">
     <div class="wrapper">
@@ -25,10 +25,10 @@
     </div>
     <div class="image-button">
         <a href="index.php?action=roueDeChoix">
-            <img src="_assets/images/Home_button.png" width="300" height="225" id="homeButton" onclick="changeText()">
+            <img src="../../_assets/images/Home_button.png" width="300" height="225" id="homeButton" onclick="changeText()">
         </a>
     </div>
 </div>
-<img id="logo" src="_assets/images/logo.png" alt="Logo">
+<img id="logo" src="../../_assets/images/logo.png" alt="Logo">
 </body>
 </html>
