@@ -1,16 +1,10 @@
 <?php
+/*BIENVENUE PAGE*/
+class HomeController{
 
-require_once 'src/view/HomeView.php';
-
-class HomeController {
-
-    private $view;
-
-    public function __construct() {
-        $this->view = new HomeView();
-    }
-
-    public function handleRequest() {
-        $this->view->displayHome();
+    public function displayHome() {
+        include "src/view/HomeTemplate.php";
     }
 }
+
+

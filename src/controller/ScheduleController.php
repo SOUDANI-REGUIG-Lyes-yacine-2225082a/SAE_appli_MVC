@@ -3,7 +3,6 @@
 require_once 'src/view/ScheduleView.php';
 require_once 'src/model/EventModel.php';
 
-
 class ScheduleController {
 
     private $eventModel;
