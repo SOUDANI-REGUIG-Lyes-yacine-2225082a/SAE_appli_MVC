@@ -1,19 +1,26 @@
 <?php
 class HomeView {
+
+    private $pathToAssets;
+
+    public function __construct() {
+
+        $this->pathToAssets = '_assets';
+    }
     public function displayHome() {
         echo '<!DOCTYPE html>
         <html lang="fr">
         <head>
             <meta charset="UTF-8">
             <title>Accueil</title>
-            <link rel="icon" type="image/png" href="path_to_assets/images/favicon.png">
-            <link rel="stylesheet" href="path_to_assets/styles/PageCommune.css">
-            <link rel="stylesheet" href="path_to_assets/styles/AcceuilStyle.css">
+            <link rel="icon" type="image/png" href="' . $this->pathToAssets . '/images/favicon.png">
+            <link rel="stylesheet" href="' . $this->pathToAssets . '/styles/PageCommune.css">
+            <link rel="stylesheet" href="' . $this->pathToAssets . '/styles/AcceuilStyle.css">
         </head>
         <body>
-        <script src="path_to_assets/scripts/toggleImage.js"></script>
-        <script src="path_to_assets/scripts/HideText.js"></script>
-        <script src="path_to_assets/scripts/main.js"></script>
+        <script src="' . $this->pathToAssets . '/scripts/toggleImage.js"></script>
+        <script src="' . $this->pathToAssets . '/scripts/HideText.js"></script>
+        <script src="' . $this->pathToAssets . '/scripts/main.js"></script>
 
         <div class="container">
             <div class="wrapper">
@@ -27,12 +34,12 @@ class HomeView {
             <div class="top-right-image">
             </div>
             <div class="image-button">
-                <a href="Home.html">
-                <img src="path_to_assets/images/Home_button.png" width="300" height="225" id="homeButton" onclick="changeText()">
+                <a href="AcceuilTemplate.php">
+                <img src="' . $this->pathToAssets . '/images/Home_button.png" width="300" height="225" id="homeButton" onclick="changeText()">
                 </a>
             </div>
         </div>
-        <img id="logo" src="path_to_assets/images/logo.png" alt="Logo">
+        <img id="logo" src="' . $this->pathToAssets . '/images/logo.png" alt="Logo">
         </body>
         </html>';
     }
