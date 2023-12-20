@@ -2,7 +2,7 @@
 session_start();
 require_once 'src/controller/ScheduleController.php';
 require_once 'src/controller/HomeController.php';
-require_once 'src/controller/AcceuilController.php';
+require_once 'src/controller/choixRoueController.php';
 
 
 $action = $_GET['action'] ?? 'default';
@@ -13,9 +13,10 @@ switch ($action) {
         $controller->displayHome();
         break;
     case 'roueDeChoix':
-        $controller = new AcceuilController();
+        $controller = new choixRoueController();
         $controller->displayRoue();
         break;
+
     // Ajoutez d'autres cas pour d'autres actions ici
     default:
         // Action par défaut ou page non trouvée
@@ -29,7 +30,7 @@ switch ($action) {
 
     /*
      * affichage 2eme page avec roue pour choix des groupes etc ...
-    $controller = new AcceuilController();
+    $controller = new choixRoueController();
     $controller->displayHome();
     */
     /*

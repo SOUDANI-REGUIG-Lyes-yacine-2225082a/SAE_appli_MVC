@@ -1,6 +1,6 @@
 <?php
 /*ROUE*/
-class AcceuilController
+class choixRoueController
 {
     private $assetsPath = "../../_assets";
     private $roueChoixPage;
