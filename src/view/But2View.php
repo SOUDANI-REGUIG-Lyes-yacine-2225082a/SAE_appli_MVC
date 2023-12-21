@@ -21,7 +21,7 @@
 </a>
 
 <a  href="index.php?action=ButA1" >
-    <img id="image_GA1" src="../../_assets/images/B2GA2.png">
+    <img id="image_GA1" src="../../_assets/images/B2GA1.png">
 </a>
 <script src="../../_assets/scripts/loadTimetable.js"></script>
 <img id="logo" src="../../_assets/images/logo.png" alt="Logo">
