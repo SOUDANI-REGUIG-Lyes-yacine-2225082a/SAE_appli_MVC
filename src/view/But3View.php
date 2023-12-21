@@ -17,7 +17,7 @@
 <a href="index.php?action=ButGA1">
 
     <img id="image_GB" src="../../_assets/images/B2GB.png">
-<a href="index.php?action=ButGB">
+<a href="index.php?action=But3GB">
 </a>
 <img id="image_GA2" src="../../_assets/images/B2GA2.png">
     <a href="index.php?action=ButGA2">
