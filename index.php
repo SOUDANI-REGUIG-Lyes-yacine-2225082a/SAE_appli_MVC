@@ -29,8 +29,8 @@ switch ($action) {
         $controller = new choixRoueController();
         $controller->displayBut3();
         break;
-    case 'ButGB':
-        $controller = new choixBut3();
+    case 'But3GB':
+        $controller = new choixBut3Controller();
         $controller->displayBut3GB();
     // Ajoutez d'autres cas pour d'autres actions ici
     default:
