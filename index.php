@@ -30,7 +30,7 @@ switch ($action) {
         $controller->displayBut3();
         break;
     case 'ButGB':
-        $controller = new choixBut3();
+        $controller = new choixBUT3Controller();
         $controller->displayBut3GB();
     // Ajoutez d'autres cas pour d'autres actions ici
     default:
