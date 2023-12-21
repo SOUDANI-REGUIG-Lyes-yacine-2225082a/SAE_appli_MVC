@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Groupe A1</title>
     <link rel="icon" type="image/png" href="../../../_assets/images/favicon.png">
-    <link rel="stylesheet" href="../../../_assets/styles/But1G1EdtStyle.css">
+    <link rel="stylesheet" href="../../../_assets/styles/But2GA1EdtStyle.css">
     <link rel="stylesheet" href="../../../_assets/styles/PageCommune.css">
 </head>
 <body>
