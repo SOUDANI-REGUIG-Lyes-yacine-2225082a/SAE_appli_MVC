@@ -38,12 +38,12 @@ switch ($action) {
         exit;
         break;
 
-
+/*
     $controller = new choixRoueController();
     $controller->displayRoue();
 
     $controller = new ScheduleController();
     $controller->handleRequest_Tab();
-
+*/
 }
 ?>

@@ -3,7 +3,7 @@
 class HomeController{
 
     public function displayHome() {
-        include "src/view/HomeTemplate.php";
+        include "src/view/HomeTemplateView.php";
     }
 }
 

@@ -6,7 +6,7 @@ class choixRoueController
     private $roueChoixPage;
 
     public function displayRoue() {
-    include "src/view/choixRoue.php";
+    include "src/view/choixRoueView.php";
     }
     public function displayBut1() {
         include "src/view/But1View.php";
