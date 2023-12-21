@@ -1,34 +1,33 @@
-<!-- PAGE CHOIX GROUPE DU BUT 1 ...-->
-
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>But1</title>
     <link rel="icon" type="image/png" href="../../_assets/images/favicon.png">
+    <link rel="stylesheet" href="../../_assets/styles/ButStyle.css">
     <link rel="stylesheet" href="../../_assets/styles/PageCommune.css">
-
-
 </head>
 <body>
-<div class="return-image">
-    <a href="index.php?action=home">
-        <img id="retour" src="../../_assets/images/retour.png" width="225" height="225">
-    </a>
-    <a href="index.php?action=g1">
-        <img id="BUT1G1" src="../../_assets/images/B1G1.png" width="155" height="140">
-    </a>
-    <a href="index.php?action=g2">
-        <img id="BUT1G2" src="../../_assets/images/B1G2.png" width="145" height="130">
-    </a>
-    <a href="index.php?action=g3">
-        <img id="BUT1G3" src="../../_assets/images/B1G3.png" width="125" height="120">
-    </a>
-    <a href="index.php?action=g4">
-        <img id="BUT1G4" src="../../_assets/images/B1G4.png" width="125" height="120">
-    </a>
-</div>
+<a href="But1Edt.html">
+    <img id="image_BUT1" src="../../_assets/images/BUT1_dmi.png" onclick="returnToInitialState()">
+</a>
+<a href="index.php?action=BUT1g1">
+    <img id="image_G1" src="../../_assets/images/B1G1.png">
+</a>
+<a href="index.php?action=BUTg2">
+    <img id="image_G2" src="../../_assets/images/B1G2.png">
+</a>
+<a href="ndex.php?action=BUTg3">
+
+    <img id="image_G3" src="../../_assets/images/B1G3.png">
+</a>
+<a href="index.php?action=BUTg4">
+    <img id="image_G4" src="../../_assets/images/B1G4.png">
+</a>
+<a  href="Home.html" >
+    <img id="return" src="../../_assets/images/return.png">
+</a>
 <img id="logo" src="../../_assets/images/logo.png" alt="Logo">
+
 </body>
 </html>
-

@@ -8,6 +8,7 @@ require_once 'src/controller/choixRoueController.php';
 $action = $_GET['action'] ?? 'default';
 
 switch ($action) {
+
     case 'home':
         $controller = new HomeController();
         $controller->displayHome();
@@ -28,6 +29,7 @@ switch ($action) {
         $controller = new choixRoueController();
         $controller->displayBut3();
         break;
+
 
     // Ajoutez d'autres cas pour d'autres actions ici
     default:

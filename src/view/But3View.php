@@ -1,30 +1,29 @@
-<!-- PAGE CHOIX GROUPE DU BUT 3 ...-->
-
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>But3</title>
     <link rel="icon" type="image/png" href="../../_assets/images/favicon.png">
     <link rel="stylesheet" href="../../_assets/styles/But3Style.css">
     <link rel="stylesheet" href="../../_assets/styles/PageCommune.css">
+
 </head>
 <body>
-<div class="return-image">
-    <a href="index.php?action=home">
-        <img id="retour" src="../../_assets/images/retour.png" width="225" height="225">
+<a href="index.php?action=But3Annee">
+    <img id="image_BUT3" src="../../_assets/images/BUT3_dmi.png" onclick="returnToInitialState()">
+</a>
+<img id="image_GA1" src="../../_assets/images/B2GA1.png">
+<a href="index.php?action=ButGA1">
+
+    <img id="image_GB" src="../../_assets/images/B2GB.png">
+<a href="index.php?action=ButGB">
+</a>
+<img id="image_GA2" src="../../_assets/images/B2GA2.png">
+    <a href="index.php?action=ButGA2">
     </a>
-    <a href="index.php?action=ga1">
-        <img id="BUT3G1" src="../../_assets/images/B3GA1.png" width="155" height="140">
-    </a>
-    <a href="index.php?action=ga2">
-        <img id="BUT3G2" src="../../_assets/images/B3GA2.png" width="145" height="130">
-    </a>
-    <a href="index.php?action=gb">
-        <img id="BUT3GB" src="../../_assets/images/B3GB.png" width="125" height="120">
-    </a>
-</div>
+<a  href="retour" >
+    <img id="return" src="../../_assets/images/return.png">
+</a>
 <img id="logo" src="../../_assets/images/logo.png" alt="Logo">
 </body>
 </html>
-

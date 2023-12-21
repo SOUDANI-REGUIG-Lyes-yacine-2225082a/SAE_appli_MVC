@@ -15,7 +15,7 @@ class choixRoueController
         include "src/view/But2View.php";
     }
     public function displayBut3() {
-        include "src/view/But2View.php";
+        include "src/view/But3View.php";
     }
 
 
