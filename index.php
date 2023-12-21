@@ -29,8 +29,9 @@ switch ($action) {
         $controller = new choixRoueController();
         $controller->displayBut3();
         break;
-
-
+    case 'ButGB':
+        $controller = new choixBut3();
+        $controller->displayBut3GB();
     // Ajoutez d'autres cas pour d'autres actions ici
     default:
         // Action par défaut ou page non trouvée
