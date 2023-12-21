@@ -30,6 +30,24 @@ switch ($action) {
         $controller->displayBut3();
         break;
 
+        /*BUT 1;; Annee = TOUT les GROUPES*/
+    case 'BUT1Annee':
+        $controller = new choixBUT1Controller();
+        $controller->displayBut1Entier();
+    case 'BUT1g1':
+        $controller = new choixBUT1Controller();
+        $controller->displayBut1G1();
+    case 'BUT1g2':
+        $controller = new choixBUT1Controller();
+        $controller->displayBut1G2();
+    case 'BUT1g3':
+        $controller = new choixBUT1Controller();
+        $controller->displayBut1G3();
+    case 'BUT1g4':
+        $controller = new choixBUT1Controller();
+        $controller->displayBut1G4();
+
+
 
     case 'But3GB':
         $controller = new choixBUT3Controller();
