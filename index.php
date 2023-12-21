@@ -30,12 +30,22 @@ switch ($action) {
         $controller->displayBut3();
         break;
 
-
+    case 'but3Annee':
+        $controller = new choixBUT3Controller();
+        $controller->displayBut3Annee();
     case 'But3GB':
         $controller = new choixBUT3Controller();
         $controller->displayBut3GB();
         break;
-    // AjouteBz d'autres cas pour d'autres actions ici
+    // Ajoutez d'autres cas pour d'autres actions ici
+    case 'But3GA1':
+        $controller = new choixBUT3Controller();
+        $controller->displayBut3GA1();
+        break;
+    case 'But3GA2':
+        $controller = new choixBUT3Controller();
+        $controller->displayBut3GA2();
+        break;
     default:
         // Action par défaut ou page non trouvée
         // Vous pouvez rediriger vers la page d'accueil ou afficher une page d'erreur
@@ -43,6 +53,7 @@ switch ($action) {
         $controller->displayHome();
         exit;
         break;
+
 
 /*
     $controller = new choixRoueController();

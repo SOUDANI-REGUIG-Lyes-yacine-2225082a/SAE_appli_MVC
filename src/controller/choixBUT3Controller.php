@@ -4,4 +4,13 @@ class choixBUT3Controller{
         include "src/view/BUT3/But3GB.php";
 
     }
+    public function displayBut3GA1(){
+        include "src/view/BUT3/But3GA1.php";
+    }
+    public function displayBut3GA2(){
+        include "src/view/BUT3/But3GA2.php";
+    }
+    public function displayBut3Annee(){
+        include "src/view/BUT3/But3Annee.php.php";
+    }
 }

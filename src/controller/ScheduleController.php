@@ -2,12 +2,25 @@
 
 require_once 'src/view/ScheduleView.php';
 require_once 'src/model/EventModel.php';
-
+/**
+ * Classe ScheduleController
+ *
+ * Cette classe gère l'affichage de l'emploi du temps en récupérant des données d'événements
+ * à partir de plusieurs liens ADE pour différentes classes/groupes.
+ */
 class ScheduleController {
-
+    /**
+     * @var EventModel Le modèle d'événement pour récupérer les données.
+     */
     private $eventModel;
+    /**
+     * @var ScheduleView La vue d'affichage de l'emploi du temps.
+     */
     private $scheduleView;
-
+    /**
+     * Constructeur de la classe ScheduleController.
+     * Initialise les instances de EventModel et ScheduleView.
+     */
     public function __construct() {
         $this->eventModel = new EventModel();
         $this->scheduleView = new ScheduleView();
