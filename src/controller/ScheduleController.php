@@ -2,8 +2,9 @@
 
 namespace src\controller;
 
+use src\model\EventModel;
 require_once 'src/view/ScheduleView.php';
-require_once 'src/model/EventModel.php';
+
 /**
  * Classe ScheduleController
  *

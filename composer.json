@@ -1,0 +1,10 @@
+{
+  "name": "regui/sae_appli_mvc",
+  "description": "composer",
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "src\\": "src/"
+    }
+  }
+}

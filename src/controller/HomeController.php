@@ -1,7 +1,9 @@
 <?php
-/*BIENVENUE PAGE*/
+
 
 namespace src\controller;
+/*BIENVENUE PAGE*/
+
 class HomeController{
 
     public function displayHome() {

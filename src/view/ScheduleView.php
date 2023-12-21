@@ -1,5 +1,7 @@
 <?php
 
+
+
 class ScheduleView {
 
     public function displaySchedule($events) {

@@ -1,4 +1,7 @@
 <?php
+
+
+namespace src\controller;
 /**
  * Classe choixRoueController
  *

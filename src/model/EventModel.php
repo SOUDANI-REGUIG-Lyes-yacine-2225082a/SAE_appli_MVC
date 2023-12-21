@@ -1,5 +1,6 @@
 <?php
 
+namespace src\model;
 
 class EventModel
 {
