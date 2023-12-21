@@ -1,9 +1,14 @@
 <?php
 session_start();
-require_once 'src/controller/ScheduleController.php';
-require_once 'src/controller/HomeController.php';
-require_once 'src/controller/choixRoueController.php';
-require_once 'src/controller/choixBUT3Controller.php';
+
+require_once 'vendor/autoload.php';
+
+use src\controller\HomeController;
+use src\controller\ScheduleController;
+use src\controller\choixRoueController;
+use src\controller\choixBUT3Controller;
+use src\controller\choixBUT1Controller;
+
 
 $action = $_GET['action'] ?? 'default';
 
@@ -30,22 +35,33 @@ switch ($action) {
         $controller->displayBut3();
         break;
 
-    case 'but3Annee':
-        $controller = new choixBUT3Controller();
-        $controller->displayBut3Annee();
+        /*BUT 1;; Annee = TOUT les GROUPES*/
+    case 'BUT1Annee':
+        $controller = new choixBUT1Controller();
+        $controller->displayBut1Entier();
+    case 'BUT1g1':
+        $controller = new choixBUT1Controller();
+        $controller->displayBut1G1();
+    case 'BUT1g2':
+        $controller = new choixBUT1Controller();
+        $controller->displayBut1G2();
+    case 'BUT1g3':
+        $controller = new choixBUT1Controller();
+        $controller->displayBut1G3();
+    case 'BUT1g4':
+        $controller = new choixBUT1Controller();
+        $controller->displayBut1G4();
+
+
+
     case 'But3GB':
         $controller = new choixBUT3Controller();
         $controller->displayBut3GB();
         break;
-    // Ajoutez d'autres cas pour d'autres actions ici
-    case 'But3GA1':
-        $controller = new choixBUT3Controller();
-        $controller->displayBut3GA1();
-        break;
-    case 'But3GA2':
-        $controller = new choixBUT3Controller();
-        $controller->displayBut3GA2();
-        break;
+
+
+
+
     default:
         // Action par défaut ou page non trouvée
         // Vous pouvez rediriger vers la page d'accueil ou afficher une page d'erreur
@@ -53,7 +69,6 @@ switch ($action) {
         $controller->displayHome();
         exit;
         break;
-
 
 /*
     $controller = new choixRoueController();

@@ -1,5 +1,7 @@
 <?php
 
+namespace src\controller;
+
 require_once 'src/view/ScheduleView.php';
 require_once 'src/model/EventModel.php';
 /**

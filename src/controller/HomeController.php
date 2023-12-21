@@ -1,5 +1,7 @@
 <?php
 /*BIENVENUE PAGE*/
+
+namespace src\controller;
 class HomeController{
 
     public function displayHome() {

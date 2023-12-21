@@ -1,5 +1,7 @@
 <?php
 
+namespace src\controller;
+
 class choixBUT1Controller
 {
     public function displayBut1Entier(){
