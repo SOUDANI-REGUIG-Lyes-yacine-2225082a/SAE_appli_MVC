@@ -8,6 +8,7 @@ use src\controller\ScheduleController;
 use src\controller\choixRoueController;
 use src\controller\choixBUT3Controller;
 use src\controller\choixBUT1Controller;
+use src\controller\choixBUT2Controller;
 
 
 $action = $_GET['action'] ?? 'default';
@@ -56,6 +57,25 @@ switch ($action) {
         $controller = new choixBUT1Controller();
         $controller->displayBut1G4();
         break;
+
+        /*BUT 2;; Annee = TOUT les GROUPES*/
+    case 'BUT2Annee':
+        $controller = new choixBUT2Controller();
+        $controller->displayBut2Entier();
+        break;
+    case 'BUT2ga1':
+        $controller = new choixBUT2Controller();
+        $controller->displayBut2GA1();
+        break;
+    case 'BUT2ga2':
+        $controller = new choixBUT2Controller();
+        $controller->displayBut2GA2();
+        break;
+    case 'BUT2gb':
+        $controller = new choixBUT2Controller();
+        $controller->displayBut2GB();
+        break;
+    /*BUT 3;; Annee = TOUT les GROUPES*/
 
 
 
