@@ -13,11 +13,13 @@
 <a href="index.php?action=But3Annee">
     <img id="image_BUT3" src="../../_assets/images/BUT3_dmi.png" onclick="returnToInitialState()">
 </a>
-<img id="image_GA1" src="../../_assets/images/B2GA1.png">
 <a href="index.php?action=ButGA1">
+    <img id="image_GA1" src="../../_assets/images/B2GA1.png"
+</a>
 
-    <img id="image_GB" src="../../_assets/images/B2GB.png">
+
 <a href="index.php?action=But3GB">
+    <img id="image_GB" src="../../_assets/images/B2GB.png">
 </a>
 <img id="image_GA2" src="../../_assets/images/B2GA2.png">
     <a href="index.php?action=ButGA2">

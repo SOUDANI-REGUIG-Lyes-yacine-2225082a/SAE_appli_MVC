@@ -3,7 +3,7 @@ session_start();
 require_once 'src/controller/ScheduleController.php';
 require_once 'src/controller/HomeController.php';
 require_once 'src/controller/choixRoueController.php';
-
+require_once 'src/controller/choixBUT3Controller.php';
 
 $action = $_GET['action'] ?? 'default';
 
@@ -29,9 +29,12 @@ switch ($action) {
         $controller = new choixRoueController();
         $controller->displayBut3();
         break;
+
+
     case 'But3GB':
         $controller = new choixBUT3Controller();
         $controller->displayBut3GB();
+        break;
     // AjouteBz d'autres cas pour d'autres actions ici
     default:
         // Action par défaut ou page non trouvée
