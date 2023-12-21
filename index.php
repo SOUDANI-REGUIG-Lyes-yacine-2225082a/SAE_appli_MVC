@@ -39,18 +39,23 @@ switch ($action) {
     case 'BUT1Annee':
         $controller = new choixBUT1Controller();
         $controller->displayBut1Entier();
+        break;
     case 'BUT1g1':
         $controller = new choixBUT1Controller();
         $controller->displayBut1G1();
+        break;
     case 'BUT1g2':
         $controller = new choixBUT1Controller();
         $controller->displayBut1G2();
+        break;
     case 'BUT1g3':
         $controller = new choixBUT1Controller();
         $controller->displayBut1G3();
+
     case 'BUT1g4':
         $controller = new choixBUT1Controller();
         $controller->displayBut1G4();
+        break;
 
 
 

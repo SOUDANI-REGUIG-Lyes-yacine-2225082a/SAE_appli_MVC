@@ -23,7 +23,7 @@
 <a href="index.php?action=BUT1g4">
 <img id="G4" src="../../_assets/images/B1G4b.png">
 </a>
-<a  href="Home.html" >
+<a  href="index.php?action=roueDeChoix" >
     <img id="return" src="../../_assets/images/return.png">
 </a>
 <img id="logo" src="../../_assets/images/logo.png" alt="Logo">

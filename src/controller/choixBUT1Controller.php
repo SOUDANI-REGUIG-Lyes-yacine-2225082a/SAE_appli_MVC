@@ -6,7 +6,7 @@ class choixBUT1Controller
 {
     public function displayBut1Entier(){
       include "src/view/BUT1/But1Edt.php";
-}
+    }
     public function displayBut1G1(){
         include "src/view/BUT1/But1G1.php";
     }
