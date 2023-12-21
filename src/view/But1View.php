@@ -19,7 +19,6 @@
     <img id="image_G2" src="../../_assets/images/B1G2.png">
 </a>
 <a href="ndex.php?action=BUT1g3">
-
     <img id="image_G3" src="../../_assets/images/B1G3.png">
 </a>
 <a href="index.php?action=BUT1g4">

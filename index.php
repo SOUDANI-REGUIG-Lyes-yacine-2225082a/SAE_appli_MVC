@@ -36,6 +36,9 @@ switch ($action) {
         $controller->displayBut3GB();
         break;
     // AjouteBz d'autres cas pour d'autres actions ici
+
+
+
     default:
         // Action par défaut ou page non trouvée
         // Vous pouvez rediriger vers la page d'accueil ou afficher une page d'erreur
