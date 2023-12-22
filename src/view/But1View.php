@@ -18,13 +18,13 @@
 <a href="index.php?action=BUT1g2">
     <img id="image_G2" src="../../_assets/images/B1G2.png">
 </a>
-<a href="ndex.php?action=BUT1g3">
+<a href="index.php?action=BUT1g3">
     <img id="image_G3" src="../../_assets/images/B1G3.png">
 </a>
 <a href="index.php?action=BUT1g4">
     <img id="image_G4" src="../../_assets/images/B1G4.png">
 </a>
-<a  href="Home.html" >
+<a  href="index.php?action=roueDeChoix" >
     <img id="return" src="../../_assets/images/return.png">
 </a>
 <img id="logo" src="../../_assets/images/logo.png" alt="Logo">

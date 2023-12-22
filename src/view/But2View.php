@@ -13,16 +13,16 @@
     <img id="image_BUT2" src="../../_assets/images/BUT2_dmi.png" onclick="returnToInitialState()">
 </a>
 
-<a href="index.php?action=But2B">
-    <img id="image_GB" src="../../_assets/images/B2GB.png">
+<a href="index.php?action=BUT2ga1">
+    <img id="image_GB" src="../../_assets/images/B2GA1.png">
 </a>
 
-<a  href="index.php?action=ButA2" >
+<a  href="index.php?action=BUT2ga2" >
     <img id="image_GA2" src="../../_assets/images/B2GA2.png">
 </a>
 
-<a  href="index.php?action=ButA1" >
-    <img id="image_GA1" src="../../_assets/images/B2GA1.png">
+<a  href="index.php?action=BUT2gb" >
+    <img id="image_GA1" src="../../_assets/images/B2GB.png">
 </a>
 <script src="../../_assets/scripts/loadTimetable.js"></script>
 <img id="logo" src="../../_assets/images/logo.png" alt="Logo">

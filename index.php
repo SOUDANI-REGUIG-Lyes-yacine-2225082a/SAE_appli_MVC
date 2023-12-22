@@ -52,7 +52,7 @@ switch ($action) {
     case 'BUT1g3':
         $controller = new choixBUT1Controller();
         $controller->displayBut1G3();
-
+        break;
     case 'BUT1g4':
         $controller = new choixBUT1Controller();
         $controller->displayBut1G4();

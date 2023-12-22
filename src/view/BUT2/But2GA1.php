@@ -10,7 +10,7 @@
 <body>
 <div class="container">
     <img id="image_up" src="../../../_assets/images/B1G1_Up.png">
-    <p class="text">Groupe A1</p>
+
 </div>
 <a  href="index.php?action=but2" >
     <img id="return" src="../../../_assets/images/return.png">
