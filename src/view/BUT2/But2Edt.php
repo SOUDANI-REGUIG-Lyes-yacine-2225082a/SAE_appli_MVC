@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>EDT BUT1</title>
+    <title>EDT BUT2</title>
     <link rel="icon" type="image/png" href="../../../_assets/images/favicon.png">
     <link rel="stylesheet" href="../../../_assets/styles/But2EdtStyle.css">
     <link rel="stylesheet" href="../../../_assets/styles/PageCommune.css">
@@ -22,7 +22,7 @@
 </a>
 <a  href="index.php?action=roueDeChoix" >
     <img id="return" src="../../../_assets/images/return.png">
-</a>
+</a
 <img id="logo" src="../../../_assets/images/logo.png" alt="Logo">
 </body>
 </html>

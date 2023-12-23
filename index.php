@@ -59,7 +59,7 @@ switch ($action) {
         break;
 
         /*BUT 2;; Annee = TOUT les GROUPES*/
-    case 'BUT2Annee':
+    case 'BUT2A':
         $controller = new choixBUT2Controller();
         $controller->displayBut2Entier();
         break;
@@ -75,7 +75,6 @@ switch ($action) {
         $controller = new choixBUT2Controller();
         $controller->displayBut2GB();
         break;
-    /*BUT 3;; Annee = TOUT les GROUPES*/
 
 
     /*BUT 3;; Annee = TOUT les GROUPES*/
@@ -95,9 +94,6 @@ switch ($action) {
         $controller = new choixBUT3Controller();
         $controller->displayBut3GB();
         break;
-
-
-
 
     default:
         // Action par défaut ou page non trouvée
