@@ -9,16 +9,16 @@
     <link rel="stylesheet" href="../../_assets/styles/PageCommune.css">
 </head>
 <body>
-<a href="index.php?action=But3Annee">
+<a href="index.php?action=BUT'3Annee">
     <img id="image_BUT3" src="../../_assets/images/BUT3_dmi.png"">
 </a>
-<a href="index.php?action=But3GA1">
+<a href="index.php?action=BUT3ga1">
     <img id="image_GA1" src="../../_assets/images/B2GA1.png"
 </a>
-<a href="index.php?action=But3GB">
+<a href="index.php?action=BUT3gb">
     <img id="image_GB" src="../../_assets/images/B2GB.png">
 </a>
-<a href="index.php?action=But3GA2">
+<a href="index.php?action=BUT3ga2">
 <img id="image_GA2" src="../../_assets/images/B2GA2.png">
     </a>
 
