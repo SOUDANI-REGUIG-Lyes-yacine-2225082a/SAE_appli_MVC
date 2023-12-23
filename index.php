@@ -59,9 +59,9 @@ switch ($action) {
         break;
 
         /*BUT 2;; Annee = TOUT les GROUPES*/
-    case 'BUT2A':
+    case 'BUT2Annee':
         $controller = new choixBUT2Controller();
-        $controller->displayBut2Entier();
+        $controller->displayBut2Full();
         break;
     case 'BUT2ga1':
         $controller = new choixBUT2Controller();
@@ -100,7 +100,6 @@ switch ($action) {
         // Vous pouvez rediriger vers la page d'accueil ou afficher une page d'erreur
         $controller = new HomeController();
         $controller->displayHome();
-        exit;
         break;
 
 /*

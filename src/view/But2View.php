@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="../../_assets/styles/PageCommune.css">
 </head>
 <body>
-<a href="index.php?action=But2A">
-    <img id="image_BUT2" src="../../_assets/images/BUT2_dmi.png" onclick="returnToInitialState()">
+<a href="index.php?action=BUT2Annee">
+    <img id="image_BUT2" src="../../_assets/images/BUT2_dmi.png">
 </a>
 
 <a href="index.php?action=BUT2ga1">

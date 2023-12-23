@@ -3,7 +3,7 @@
 namespace src\controller;
 
 class choixBUT2Controller{
-    public function displayBut2Entier(){
+    public function displayBut2Full(){
         include "src/view/BUT2/But2Edt.php";
     }
     public function displayBut2GA1(){
