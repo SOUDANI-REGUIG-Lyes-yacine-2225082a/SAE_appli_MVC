@@ -19,6 +19,7 @@ use src\controller\choixBUT2Controller;
     $router->addRoute('but1', choixRoueController::class, 'displayBut1');
     $router->addRoute('but2', choixRoueController::class, 'displayBut2');
     $router->addRoute('but3', choixRoueController::class, 'displayBut3');
+    $router->addRoute('salles', choixRoueController::class,'displaySalles');
 
     $router->addRoute('BUT1Annee', choixBUT1Controller::class, 'displayBut1Entier');
     $router->addRoute('BUT1g1', choixBUT1Controller::class, 'displayBut1G1');

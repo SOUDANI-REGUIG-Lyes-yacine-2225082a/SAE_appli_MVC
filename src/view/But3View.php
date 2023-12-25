@@ -20,7 +20,11 @@
 </a>
 <a href="index.php?action=BUT3ga2">
 <img id="image_GA2" src="../../_assets/images/B2GA2.png">
-    </a>
+</a>
+
+<a  href="index.php?action=roueDeChoix" >
+    <img id="return" src="../../_assets/images/return.png">
+</a>
 
 <img id="logo" src="../../_assets/images/logo.png" alt="Logo">
 </body>
