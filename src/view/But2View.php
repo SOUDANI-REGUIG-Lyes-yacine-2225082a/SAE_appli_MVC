@@ -24,6 +24,9 @@
 <a  href="index.php?action=BUT2gb" >
     <img id="image_GA1" src="../../_assets/images/B2GB.png">
 </a>
+<a  href="index.php?action=roueDeChoix" >
+    <img id="return" src="../../_assets/images/return.png">
+</a>
 <script src="../../_assets/scripts/loadTimetable.js"></script>
 <img id="logo" src="../../_assets/images/logo.png" alt="Logo">
 
