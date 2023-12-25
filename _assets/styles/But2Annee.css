@@ -1,0 +1,34 @@
+#image_up {
+    width: 900px;
+    height: auto;
+    display: block;
+    position: absolute; /* Utilisation de la position absolue pour fixer l'image */
+    left: 300px; /* Positionnement spécifique à gauche */
+    top: 0px; /* Positionnement spécifique en haut */
+}
+
+#GA1{
+    width: 100px;
+    height: auto;
+    display: block;
+    position: absolute;
+    left: 300px;
+    top: 05px;
+}
+
+#GA2{
+    width: 100px;
+    height: auto;
+    display: block;
+    position: absolute;
+    left: 500px;
+    top: 05px;
+}
+#GB{
+     width: 100px;
+     height: auto;
+     display: block;
+     position: absolute;
+     left: 700px;
+     top: 05px;
+ }
