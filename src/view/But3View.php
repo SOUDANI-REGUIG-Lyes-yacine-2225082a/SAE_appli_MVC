@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../../_assets/styles/PageCommune.css">
 </head>
 <body>
-<a href="index.php?action=BUT'3Annee">
+<a href="index.php?action=BUT3Annee">
     <img id="image_BUT3" src="../../_assets/images/BUT3_dmi.png"">
 </a>
 <a href="index.php?action=BUT3ga1">
