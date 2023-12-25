@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="container">
-    <img id="image_up" src="../../../_assets/images/B1G1_Up.png">
+    <img id="image_up" src="../../../_assets/images/GA1_UP.png">
 
 </div>
 <a  href="index.php?action=but2" >
