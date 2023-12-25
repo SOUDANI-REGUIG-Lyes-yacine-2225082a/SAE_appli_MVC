@@ -4,7 +4,7 @@
     display: block;
     position: absolute; /* Utilisation de la position absolue pour fixer l'image */
     left: 300px; /* Positionnement spécifique à gauche */
-    top: 0px; /* Positionnement spécifique en haut */
+    top: -2px; /* Positionnement spécifique en haut */
 }
 
 #GA1{
@@ -12,7 +12,7 @@
     height: auto;
     display: block;
     position: absolute;
-    left: 300px;
+    left: 480px;
     top: 05px;
 }
 
@@ -21,7 +21,7 @@
     height: auto;
     display: block;
     position: absolute;
-    left: 500px;
+    left: 680px;
     top: 05px;
 }
 #GB{
@@ -29,6 +29,14 @@
      height: auto;
      display: block;
      position: absolute;
-     left: 700px;
+     left: 880px;
      top: 05px;
  }
+#return {
+      width: 90px;
+      height: auto;
+      display: block;
+      position: absolute;
+      left: 1440px;
+      top: 640px;
+  }
