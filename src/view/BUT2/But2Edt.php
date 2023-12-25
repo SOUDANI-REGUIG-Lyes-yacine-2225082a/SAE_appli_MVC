@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <title>EDT BUT2</title>
     <link rel="icon" type="image/png" href="../../../_assets/images/favicon.png">
-    <link rel="stylesheet" href="../../../../_assets/styles/But2EdtStyle.css">
+    <link rel="stylesheet" href="../../../_assets/styles/But2EdtStyle.css">
     <link rel="stylesheet" href="../../../_assets/styles/PageCommune.css">
 </head>
 <body>
-<a href="index.php?action=But2Edt">
+<a href="index.php?action=BUT2Annee">
 <img id="image_up" src="../../../_assets/images/BUT1_Up.png">
 </a>
 <a href="index.php?action=BUT2ga1">
