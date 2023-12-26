@@ -21,10 +21,11 @@
     <a href="index.php?action=but2">
         <img id="BUT2" src="../../_assets/images/But2.png" width="145" height="130">
     </a>
-    <!-- Si enseignant est une page statique, vous pouvez laisser le lien direct au fichier HTML -->
+
     <img id="enseignant" src="../../_assets/images/enseignant.png" width="125" height="120">
+
     <a href="index.php?action=salles">
-    <img id="SallesInformatique" src="../../_assets/images/SallesInformatique.png" width="145" height="135">
+        <img id="SallesInformatique" src="../../_assets/images/SallesInformatique.png" width="145" height="135">
     </a>
     <a href="index.php?action=but1">
         <img id="BUT1" src="../../_assets/images/But1.png" width="125" height="120">

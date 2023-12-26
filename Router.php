@@ -15,7 +15,7 @@ class Router {
         $controller->$methodName();
     } else {
     // Gérer l'action par défaut ou l'erreur 404 ici
-    echo "Page not found!";
+    echo "Page not found! ya pas weshhh";
 }
 }
 }

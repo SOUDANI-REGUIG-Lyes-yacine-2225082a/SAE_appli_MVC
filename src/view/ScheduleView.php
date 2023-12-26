@@ -1,6 +1,6 @@
 <?php
 
-
+namespace src\view;
 
 class ScheduleView {
 

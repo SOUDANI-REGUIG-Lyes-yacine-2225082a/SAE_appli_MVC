@@ -5,7 +5,7 @@ namespace src\controller;
 /**
  * Contrôleur pour la gestion de la vue But1.
  */
-class choixBUT1Controller{
+class choixBUT1Controller extends BaseScheduleController {
     /**
      * Affiche la vue But1Edt.
      *
@@ -13,6 +13,7 @@ class choixBUT1Controller{
      */
     public function displayBut1Entier(){
         include "src/view/BUT1/But1Edt.php";
+
     }
 
     /**
