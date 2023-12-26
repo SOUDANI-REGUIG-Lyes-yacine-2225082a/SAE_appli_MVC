@@ -5,27 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Salles Libres</title>
     <link rel="icon" type="image/png" href="../../_assets/images/favicon.png">
-    <style>
-        /* Styles pour les blocs carrés arrondis */
-        .square {
-            width: 200px;
-            height: 200px;
-            border-radius: 20px;
-            border: 2px solid black;
-            display: inline-block;
-            margin: 20px; /* Ajustez la marge selon votre mise en page */
-        }
+    <link rel="stylesheet" href="../../_assets/styles/ButSalles.css">
+    <link rel="stylesheet" href="../../_assets/styles/PageCommune.css">
 
-        /* Style pour le bloc carré orange */
-        .orange {
-            background-color: orange;
-        }
-
-        /* Style pour le bloc carré bleu */
-        .blue {
-            background-color: blue;
-        }
-    </style>
 </head>
 <body>
 

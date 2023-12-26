@@ -6,3 +6,42 @@
     left: 1430px;
     top: 620px;
 }
+
+     /* Styles pour les blocs carrés arrondis */
+.square {
+     width: 200px;
+     height: 200px;
+     border-radius: 20px;
+     border: 2px solid black;
+     display: inline-block;
+     margin: 20px; /* Ajustez la marge selon votre mise en page */
+ }
+
+/* Style pour le bloc carré orange */
+.orange {
+    background-color: orange;
+}
+
+/* Style pour le bloc carré bleu */
+.blue {
+    background-color: blue;
+}
+     /* Styles pour les blocs carrés arrondis */
+ .square {
+     width: 200px;
+     height: 200px;
+     border-radius: 20px;
+     border: 2px solid black;
+     display: inline-block;
+     margin: 20px; /* Ajustez la marge selon votre mise en page */
+ }
+
+/* Style pour le bloc carré orange */
+.orange {
+    background-color: orange;
+}
+
+/* Style pour le bloc carré bleu */
+.blue {
+    background-color: blue;
+}
