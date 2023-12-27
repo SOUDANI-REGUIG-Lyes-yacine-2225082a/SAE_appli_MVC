@@ -6,7 +6,7 @@ class ScheduleView {
 
     public function displaySchedule($events) {
         ob_start();
-
+        echo '<div class="schedule-container">';
         $html = '<table class="schedule-table">'; // Utiliser une classe pour le style CSS
         $html .= '<tr><th>Lundi</th><th>Mardi</th><th>Mercredi</th><th>Jeudi</th><th>Vendredi</th><th>Samedi</th></tr>';
 
@@ -29,6 +29,8 @@ class ScheduleView {
         $html .= '</tr>';
 
         $html .= '</table>';
+
+        echo '</div>';
 
         echo $html;
         $content = ob_get_clean();
