@@ -1,61 +1,57 @@
-/* Styles généraux pour le conteneur du tableau */
+/* Retirons les styles de flex-container pour éviter le centrage vertical qui étend la page */
 .container {
-    width: 100%; /* Le conteneur prend toute la largeur */
+    width: 100%;
 }
 
-/* Styles pour le tableau */
+/* Assurons que le tableau prend toute la largeur et n'a pas de marges qui le poussent vers le bas */
 .schedule-table {
-    width: 100%; /* Le tableau prend toute la largeur du conteneur */
-    margin: 0 auto; /* Centre le tableau horizontalement */
-    border-collapse: collapse; /* Fusionne les bordures des cellules */
-    margin-bottom: 20px; /* Espace sous le tableau */
+    width: 100%;
+    margin: 0; /* Aucune marge au-dessus ou en dessous du tableau */
+    border-collapse: collapse;
 }
 
-/* Styles pour les en-têtes et les cellules du tableau */
 .schedule-table th, .schedule-table td {
     border: 1px solid #ddd;
-    padding: 15px; /* Plus d'espace autour du texte */
-    text-align: center; /* Centrage du texte */
+    padding: 15px;
+    text-align: center;
 }
 
-/* Styles pour les en-têtes du tableau */
 .schedule-table th {
-    background-color: #4CAF50; /* Couleur de fond des en-têtes */
-    color: white; /* Texte des en-têtes en blanc */
+    background-color: #4CAF50;
+    color: white;
 }
 
-/* Alternance des couleurs pour les lignes */
 .schedule-table tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
-/* Couleur de fond au survol */
 .schedule-table tr:hover {
     background-color: #ddd;
 }
 
-/* Style pour "Pas cours" */
 .schedule-table .no-class {
     color: #999;
     font-style: italic;
 }
 
-/* Adaptations pour les petits écrans */
+/* Styles adaptés pour les écrans étroits */
 @media screen and (max-width: 600px) {
     .schedule-table td {
-        padding: 10px; /* Padding plus petit pour les écrans étroits */
+        padding: 10px;
     }
-    /* D'autres ajustements pour la responsivité si nécessaire */
 }
 
-/* Ajout de styles pour centrer le tableau sous l'image "GROUPE 1" */
+/* Ajout de l'espacement après l'image "GROUPE 1" */
 .image-group1 {
-    display: block; /* Assurez-vous que l'image est un bloc pour permettre la marge en dessous */
-    width: 100%; /* L'image occupe toute la largeur */
-    margin-bottom: 20px; /* Espace en dessous de l'image */
+    margin-bottom: 20px; /* Ajustez selon l'espacement souhaité après l'image */
 }
 
-/* Si vous avez une en-tête fixe ou une navigation, ajoutez des styles ici pour éviter de couvrir le tableau */
-.header-container {
-    /* Styles pour votre en-tête, si nécessaire */
+/* Enlèvement du style d'alignement vertical du .container */
+.container {
+    display: block;
+}
+
+/* Correction d'éventuels problèmes de hauteur de l'élément .container */
+.container {
+    height: auto;
 }
