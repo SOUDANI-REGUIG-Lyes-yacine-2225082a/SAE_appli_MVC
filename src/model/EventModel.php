@@ -1,46 +1,63 @@
 <?php
 
 namespace src\model;
-
+use Exception;
 class EventModel
 {
-    private $adeLinks = [
-    //1AG1
-    1 => "https://ade-web-consult.univ-amu.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?projectId=8&resources=8382&calType=ical&firstDate=2023-12-18&lastDate=2023-12-22",
-    //1AG2
-    2 => "https://ade-web-consult.univ-amu.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?projectId=8&resources=8380&calType=ical&firstDate=2023-12-18&lastDate=2023-12-22",
-    //1AG3
-    3 => "https://ade-web-consult.univ-amu.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?projectId=8&resources=8383&calType=ical&firstDate=2023-12-18&lastDate=2023-12-22",
-    //1AG4
-    4 => "https://ade-web-consult.univ-amu.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?projectId=8&resources=8381&calType=ical&firstDate=2023-12-18&lastDate=2023-12-22",
-    //But1
-    5 => "https://ade-web-consult.univ-amu.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?projectId=8&resources=8379&calType=ical&firstDate=2023-12-18&lastDate=2023-12-22",
 
-        //2AGA1
-    6 => "https://ade-web-consult.univ-amu.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?projectId=8&resources=8396&calType=ical&firstDate=2024-01-15&lastDate=2024-01-19",
-    //2AGA2
-    7 => "https://ade-web-consult.univ-amu.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?projectId=8&resources=8397&calType=ical&firstDate=2023-12-18&lastDate=2023-12-22",
-    //2AGB
-    8 => "https://ade-web-consult.univ-amu.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?projectId=8&resources=8398&calType=ical&firstDate=2023-12-18&lastDate=2023-12-22",
-        //But2
-    9 => "https://ade-web-consult.univ-amu.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?projectId=8&resources=45843&calType=ical&firstDate=2023-12-18&lastDate=2023-12-22",
+    private $baseUrl = "https://ade-web-consult.univ-amu.fr/jsp/custom/modules/plannings/anonymous_cal.jsp";
+    private $projectId = 8; // projectId fixe
+    private $groupResourceIds = [
+        'BUTg1'      => 8382,
+        'BUT1g2'    => 8380,
+        'BUT1g3'    => 8383,
+        'BUT1g4'    => 8381,
+        'BUT1Annee' => 8379,
 
-        //3AGA1
-    10 => "https://ade-web-consult.univ-amu.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?projectId=8&resources=42523&calType=ical&firstDate=2023-12-18&lastDate=2023-12-22",
-    //3AGA2
-    11 => "https://ade-web-consult.univ-amu.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?projectId=8&resources=42524&calType=ical&firstDate=2023-12-18&lastDate=2023-12-22",
-    //3AGB
-    12 => "https://ade-web-consult.univ-amu.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?projectId=8&resources=42525&calType=ical&firstDate=2023-12-18&lastDate=2023-12-22",
-    //But3
-    13 => "https://ade-web-consult.univ-amu.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?projectId=8&resources=8408&calType=ical&firstDate=2023-12-18&lastDate=2023-12-22"
+        'BUT2ga1'   => 8396,
+        'BUT2ga2'   => 8397,
+        'BUT2gb'    => 8398,
+        'BUT2Annee' => 45843,
+
+        'BUT3ga1'   => 42523,
+        'BUT3ga2'   => 42524,
+        'BUT3gb'    => 45225,
+        'BUT3Annee' => 8408
     ];
     private $events = [];
+
+    public function generateIcsUrl($action, $firstDate, $lastDate) {
+        if (!isset($this->groupResourceIds[$action])) {
+            throw new \Exception("ResourceId non trouvé pour le groupe : " . $action);
+        }
+
+        $resourceId = $this->groupResourceIds[$action];
+
+        $queryParams = http_build_query([
+            'projectId' => $this->projectId,
+            'resources' => $resourceId,
+            'calType' => 'ical',
+            'firstDate' => $firstDate,
+            'lastDate' => $lastDate
+        ]);
+
+        return $this->baseUrl . '?' . $queryParams;
+    }
+
+
+
+
 
 
     public function prepareData($value) {
         if (is_string($value)) {
             $value = preg_replace('/\b\d{13,}\b/', '', $value);
+            /*a chaque '\n' rencontré il est enlevé du texte et remplacé par une EOL(End of line pour les ignorants)*/
             $value = str_replace('\n', PHP_EOL, $value);
+            $value = preg_replace('/\(Modifié le:.*?\)/', '', $value);
+            $value = preg_replace('/\(Modif.*/', '', $value);
+
+            /*Supprime les antislashs*/
             $value = stripslashes($value);
         } elseif (is_array($value)) {
             return array_map([$this, 'prepareData'], $value);
@@ -74,6 +91,8 @@ class EventModel
         $startTime = date('H:i', strtotime($eventData['DTSTART'])); // Heure de début au format HH:mm
         $endTime = date('H:i', strtotime($eventData['DTEND'])); // Heure de fin au format HH:mm
         $summary = $eventData['SUMMARY'];
+        $location = $eventData['LOCATION'];
+        $description = $eventData['DESCRIPTION'];
 
         if (!isset($this->events[$dayOfWeek])) {
             $this->events[$dayOfWeek] = [];
@@ -82,22 +101,15 @@ class EventModel
         $this->events[$dayOfWeek][] = [
             'start' => $startTime,
             'end' => $endTime,
-            'summary' => $summary
+            'summary' => $summary,
+            'location' => $location,
+            'description' => $this->prepareData($description)
         ];
     }
 
-    public function retrieveMultipleIcsAvant(array $adeLinks) {
-        foreach ($adeLinks as $key => $link) {
-            try {
-                $this->recupIcs($link);
-            } catch (Exception $e) {
-                echo "Error for ADE code $key: " . $e->getMessage() . "\n";
-            }
-        }
-        return $this->events; // Retourner les événements récupérés
-    }
 
-    public function retrieveMultipleIcs(array $selectedGroups) {
+/*
+    public function retrieveMultipleIcsLienAncien(array $selectedGroups) {
         $this->events = [];
 
         foreach ($selectedGroups as $groupKey) {
@@ -112,5 +124,22 @@ class EventModel
 
         return $this->events;
 
+    }*/
+
+    public function retrieveMultipleIcs($selectedGroups, $firstDate, $lastDate) {
+        $this->events = [];
+
+        foreach ($selectedGroups as $action) {
+            if(isset($this->groupResourceIds[$action])){
+                try {
+                    $url = $this->generateIcsUrl($action, $firstDate, $lastDate);
+                    $this->recupIcs($url);
+                } catch (Exception $e) {
+                    echo "Erreur pour le groupe $action: " . $e->getMessage() . "\n";
+                }
+            }
+        }
+
+        return $this->events;
     }
 }
