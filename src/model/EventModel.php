@@ -8,7 +8,7 @@ class EventModel
     private $baseUrl = "https://ade-web-consult.univ-amu.fr/jsp/custom/modules/plannings/anonymous_cal.jsp";
     private $projectId = 8; // projectId fixe
     private $groupResourceIds = [
-        'BUTg1'      => 8382,
+        'BUT1g1'      => 8382,
         'BUT1g2'    => 8380,
         'BUT1g3'    => 8383,
         'BUT1g4'    => 8381,
