@@ -26,12 +26,12 @@ class EventModel
     ];
     private $events = [];
 
-    public function generateIcsUrl($action, $firstDate, $lastDate) {
-        if (!isset($this->groupResourceIds[$action])) {
-            throw new \Exception("ResourceId non trouvé pour le groupe : " . $action);
+    public function generateIcsUrl($groupName, $firstDate, $lastDate) {
+        if (!isset($this->groupResourceIds[$groupName])) {
+            throw new \Exception("ResourceId non trouvé pour le groupe : " . $groupName);
         }
 
-        $resourceId = $this->groupResourceIds[$action];
+        $resourceId = $this->groupResourceIds[$groupName];
 
         $queryParams = http_build_query([
             'projectId' => $this->projectId,
@@ -43,6 +43,9 @@ class EventModel
 
         return $this->baseUrl . '?' . $queryParams;
     }
+
+
+
 
 
 
@@ -66,6 +69,7 @@ class EventModel
     }
 
     public function recupIcs($url) {
+        $url = html_entity_decode($url);
         $icsContent = file_get_contents($url);
         if ($icsContent === false) {
             throw new Exception("Unable to retrieve ICS content.");
@@ -107,39 +111,48 @@ class EventModel
         ];
     }
 
-
-/*
-    public function retrieveMultipleIcsLienAncien(array $selectedGroups) {
+    public function retrieveIcs($resourceId, $firstDate, $lastDate) {
         $this->events = [];
 
-        foreach ($selectedGroups as $groupKey) {
-            if (isset($this->adeLinks[$groupKey])) {
-                try {
-                    $this->recupIcs($this->adeLinks[$groupKey]);
-                } catch (Exception $e) {
-                    echo "Error" . $e->getMessage() . "\n";
-                }
+        try {
+
+            $url = $this->generateIcsUrl($resourceId, $firstDate, $lastDate);
+
+            if (!is_string($url)) {
+                throw new Exception("L'URL générée n'est pas une chaîne valide.");
             }
-        }
 
-        return $this->events;
-
-    }*/
-
-    public function retrieveMultipleIcs($selectedGroups, $firstDate, $lastDate) {
-        $this->events = [];
-
-        foreach ($selectedGroups as $action) {
-            if(isset($this->groupResourceIds[$action])){
-                try {
-                    $url = $this->generateIcsUrl($action, $firstDate, $lastDate);
-                    $this->recupIcs($url);
-                } catch (Exception $e) {
-                    echo "Erreur pour le groupe $action: " . $e->getMessage() . "\n";
-                }
-            }
+            // Récupérer le contenu ICS à partir de l'URL
+            $this->recupIcs($url);
+        } catch (Exception $e) {
+            echo "Erreur pour le resourceId $resourceId: " . $e->getMessage() . "\n";
         }
 
         return $this->events;
     }
+
+
+
+
+    /*
+        public function retrieveMultipleIcs($selectedGroups, $firstDate, $lastDate) {
+            $this->events = [];
+
+            foreach ($selectedGroups as $action) {
+                if(isset($this->groupResourceIds[$action])){
+                    try {
+                        $url = $this->generateIcsUrl($action, $firstDate, $lastDate);
+                        $this->recupIcs($url);
+                    } catch (Exception $e) {
+                        echo "Erreur pour le groupe $action: " . $e->getMessage() . "\n";
+                    }
+                }
+            }
+
+            return $this->events;
+        }*/
+
+
 }
+
+

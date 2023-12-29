@@ -12,6 +12,8 @@ use src\controller\choixBUT1Controller;
 use src\controller\choixBUT2Controller;
 use src\controller\BaseScheduleController;
 
+use test;
+
 
     $router = new Router();
 
@@ -25,6 +27,7 @@ use src\controller\BaseScheduleController;
     $router->addRoute('salles', choixRoueController::class, 'displaySalles');
 
     $router->addRoute('BUT1Annee', choixBUT1Controller::class, 'displayBut1Entier');
+
     $router->addRoute('BUT1g1', choixBUT1Controller::class, 'displayBut1G1');
     $router->addRoute('BUT1g2', choixBUT1Controller::class, 'displayBut1G2');
     $router->addRoute('BUT1g3', choixBUT1Controller::class, 'displayBut1G3');
