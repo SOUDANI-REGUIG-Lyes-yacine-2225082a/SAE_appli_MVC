@@ -43,6 +43,8 @@ use test;
     $router->addRoute('BUT3ga2', choixBUT3Controller::class, 'displayBut3GA2');
     $router->addRoute('BUT3gb', choixBUT3Controller::class, 'displayBut3GB');
 
+    $router->addRoute('navigateWeek', BaseScheduleController::class, 'handleWeekNavigation');
+
 
 
 

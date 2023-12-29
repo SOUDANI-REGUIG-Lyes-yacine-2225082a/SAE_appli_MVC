@@ -2,6 +2,7 @@
 
 namespace src\model;
 use Exception;
+
 class EventModel
 {
 
@@ -40,16 +41,8 @@ class EventModel
             'firstDate' => $firstDate,
             'lastDate' => $lastDate
         ]);
-
         return $this->baseUrl . '?' . $queryParams;
     }
-
-
-
-
-
-
-
 
 
     public function prepareData($value) {

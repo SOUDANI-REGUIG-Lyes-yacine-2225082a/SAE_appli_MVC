@@ -13,7 +13,7 @@ class choixBUT1Controller extends BaseScheduleController {
      */
     public function displayBut1Entier(){
         include "src/view/BUT1/But1Edt.php";
-        $this->displayGroupSchedule('BUT1Annee', '2024-01-08', '2024-01-12');
+        $this->displayGroupScheduleFonctionelSansWeekChangement('BUT1Annee');
 
     }
 
@@ -24,7 +24,7 @@ class choixBUT1Controller extends BaseScheduleController {
      */
     public function displayBut1G1(){
         include "src/view/BUT1/But1G1.php";
-        $this->displayGroupSchedule('BUT1g1', '2024-01-08', '2024-01-12');
+        $this->displayGroupScheduleFonctionelSansWeekChangement('BUT1g1');
     }
 
     /**
@@ -34,7 +34,7 @@ class choixBUT1Controller extends BaseScheduleController {
      */
     public function displayBut1G2(){
         include "src/view/BUT1/But1G2.php";
-        $this->displayGroupSchedule('BUT1g2', '2024-01-08', '2024-01-12');
+        $this->displayGroupScheduleFonctionelSansWeekChangement('BUT1g2');
 
     }
 
@@ -45,7 +45,7 @@ class choixBUT1Controller extends BaseScheduleController {
      */
     public function displayBut1G3(){
         include "src/view/BUT1/But1G3.php";
-        $this->displayGroupSchedule('BUT1g3', '2024-01-08', '2024-01-12');
+        $this->displayGroupScheduleFonctionelSansWeekChangement('BUT1g3');
     }
 
     /**
@@ -55,7 +55,7 @@ class choixBUT1Controller extends BaseScheduleController {
      */
     public function displayBut1G4(){
         include "src/view/BUT1/But1G4.php";
-        $this->displayGroupSchedule('BUT1g4', '2024-01-08', '2024-01-12');
+        $this->displayGroupScheduleFonctionelSansWeekChangement('BUT14');
 
     }
 }

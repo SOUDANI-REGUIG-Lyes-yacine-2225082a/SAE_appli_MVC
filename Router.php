@@ -1,5 +1,5 @@
 <?php
-
+use src\controller\BaseScheduleController;
 class Router {
     private $routes = [];
 
@@ -8,11 +8,17 @@ class Router {
 }
 
     public function dispatch($action) {
-        if (array_key_exists($action, $this->routes)) {
+        if ($action == 'navigateWeek') {
+            // Traitez l'action navigateWeek séparément
+            $controller = new BaseScheduleController;
+            $controller->updateWeekDates();
+        }
+        elseif (array_key_exists($action, $this->routes)) {
         $controllerName = $this->routes[$action]['controller'];
         $methodName = $this->routes[$action]['method'];
         $controller = new $controllerName;
         $controller->$methodName();
+
     } else {
     // Gérer l'action par défaut ou l'erreur 404 ici
     echo "Page not found! ya pas weshhh";
