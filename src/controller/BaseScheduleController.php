@@ -48,7 +48,7 @@ class BaseScheduleController {
             // Récupère les événements pour les groupes sélectionnés et les dates spécifiées
             $events = $this->eventModel->retrieveIcs($selectedGroups, $firstDate, $lastDate);
             $this->scheduleView->displaySchedule($events);
-        } catch (\Exception $e) { // Assurez-vous d'avoir le bon namespace pour Exception
+        } catch (\Exception $e) { 
             $this->scheduleView->displayError($e->getMessage());
         }
     }
