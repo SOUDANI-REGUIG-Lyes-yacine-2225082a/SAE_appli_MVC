@@ -13,43 +13,47 @@ class BaseScheduleController {
     public function __construct() {
         $this->eventModel = new EventModel();
         $this->scheduleView = new ScheduleView();
-
-    }
-
-
-    /*$url = $this->eventModel->generateIcsUrl('BUT2gb', '2024-01-08', '2024-01-12');
-    echo $url; // echo l'URL pour le vérifier
-    avec cet ligne de commande :
-        curl -o test.ics -L "https://ade-web-consult.univ-amu.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?
-        projectId=8&resources=8382&calType=ical&firstDate=2023-01-01&lastDate=2023-01-07"*/
-
-    public function displayGroupSchedule($groupeName, $firstDate, $lastDate)
-    {
-        // Obtenez la semaine actuelle ou une semaine spécifiée
-        $weekDates = $this->getCurrentWeek();
-        $currentWeek = $weekDates['firstDate']; // Utilisez firstDate pour la navigation
-
-        if (isset($_GET['action'])) {
-            switch ($_GET['action']) {
-                case 'prevWeek':
-                    $currentWeek = date('Y-m-d', strtotime("$currentWeek -1 week"));
-                    break;
-                case 'nextWeek':
-                    $currentWeek = date('Y-m-d', strtotime("$currentWeek +1 week"));
-                    break;
-            }
+        if (!isset($_SESSION['currentWeek'])) {
+            $_SESSION['currentWeek'] = date('Y-m-d'); // Définit la semaine actuelle à la date actuelle
         }
 
-        // Recalculez firstDate et lastDate après la navigation
-        $firstDate = date('Y-m-d', strtotime('Monday this week', strtotime($currentWeek)));
-        $lastDate = date('Y-m-d', strtotime('Sunday this week', strtotime($currentWeek)));
+    }
 
-        // Générer l'URL et récupérer les événements
-        $events = $this->eventModel->retrieveIcs($groupeName, $firstDate, $lastDate);
 
-        // Afficher l'emploi du temps
+    //CELUI LA C'EST LE BON QUI MARHCE SANS PARAMETRE DE GROUPE
+    //fonction principale qui affiche les edts
+    public function displayGroupSchedule2() {
+        $groupName = $_GET['action'];
+
+        $weekDates = $this->getCurrentWeek();
+        $firstDate = $weekDates['firstDate'];
+        $lastDate = $weekDates['lastDate'];
+
+        // Récupérer et afficher l'emploi du temps
+        $events = $this->eventModel->retrieveIcs($groupName, $firstDate, $lastDate);
         $this->scheduleView->displaySchedule($events);
     }
+
+
+    //fonction fonctionnelle lol, bref elle marche mais ya un parametre de groupe
+    // je garde au cas où jen ai besoin pour les navigatins semaine
+    public function displayGroupScheduleFonctionelSansWeekChangement($selectedGroups) {
+
+        // Obtenez la semaine actuelle ou une semaine spécifiée
+        $weekDates = $this->getCurrentWeek();
+        $firstDate = $weekDates['firstDate'];
+        $lastDate = $weekDates['lastDate'];
+
+        try {
+            // Récupère les événements pour les groupes sélectionnés et les dates spécifiées
+            $events = $this->eventModel->retrieveIcs($selectedGroups, $firstDate, $lastDate);
+            $this->scheduleView->displaySchedule($events);
+        } catch (\Exception $e) { // Assurez-vous d'avoir le bon namespace pour Exception
+            $this->scheduleView->displayError($e->getMessage());
+        }
+    }
+
+
 
     private function getCurrentWeek() {
         // Si une date spécifique est passée par GET (par exemple, lors de la navigation entre les semaines),
@@ -71,39 +75,13 @@ class BaseScheduleController {
 
 
 
+
+
+    //Essai de fonction pour changer de semaine, marche pas, fonctionnalité à revoir plus tard
+    //TODO: la faire fonctionné ptdrr
     public function handleWeekNavigation() {
-        $groupName = $_GET['action'];
-        // Déterminez la semaine actuelle basée sur une entrée de session ou la date actuelle
-        $currentWeek = $_SESSION['currentWeek'] ?? date('Y-m-d');
+        $currentWeek = $_SESSION['currentWeek'];
 
-
-        // Vérifiez si une action de navigation a été demandée
-        if (isset($_GET['week'])) {
-            if ($_GET['week'] === 'prevWeek') {
-                $currentWeek = date('Y-m-d', strtotime("$currentWeek -1 week"));
-            } elseif ($_GET['week'] === 'nextWeek') {
-                $currentWeek = date('Y-m-d', strtotime("$currentWeek +1 week"));
-            }
-        }
-
-        // Mettez à jour la semaine actuelle dans la session
-        $_SESSION['currentWeek'] = $currentWeek;
-
-        // Calculez firstDate et lastDate pour la semaine actuelle
-        $firstDate = date('Y-m-d', strtotime('Monday this week', strtotime($currentWeek)));
-        $lastDate = date('Y-m-d', strtotime('Sunday this week', strtotime($currentWeek)));
-
-        // Appellez la méthode pour récupérer et afficher les événements
-
-        $events = $this->eventModel->retrieveIcs($groupName, $firstDate, $lastDate);
-        $this->scheduleView->displaySchedule($events);
-    }
-
-    public function updateWeekDates() {
-        // Initialiser ou récupérer la semaine actuelle
-        $currentWeek = $_SESSION['currentWeek'] ?? date('Y-m-d');
-
-        // Ajuster la semaine en fonction de l'action utilisateur
         if (isset($_GET['week'])) {
             switch ($_GET['week']) {
                 case 'prevWeek':
@@ -115,55 +93,44 @@ class BaseScheduleController {
             }
         }
 
-        // Mettre à jour la session avec la nouvelle semaine
+        $_SESSION['currentWeek'] = $currentWeek;
+        $groupName = $_GET['group'];
+
+        // Rediriger vers la méthode d'affichage de l'emploi du temps
+        $this->displayGroupScheduleFonctionelSansWeekChangement($groupName);
+    }
+
+
+    //même chose qu'au dessus, essai pour les navigations par semaine, marche pas
+    //TODO : faire marchez l'une ou l'autre, je sais pas encore laquelle est la plus adapté
+    public function navigateWeek($direction) {
+        $currentWeek = $_SESSION['currentWeek'];
+
+        if ($direction == 'prevWeek') {
+            $currentWeek = date('Y-m-d', strtotime("$currentWeek -1 week"));
+        } elseif ($direction == 'nextWeek') {
+            $currentWeek = date('Y-m-d', strtotime("$currentWeek +1 week"));
+        }
+
         $_SESSION['currentWeek'] = $currentWeek;
 
-        // Rediriger vers la méthode d'affichage
-        $this->displayGroupSchedule2($_SESSION['selectedGroupName']);
-    }
-
-    public function displayGroupSchedule2() {
-        $groupName = $_GET['action'];
-        // Utiliser les dates de la semaine actuelle
-        $weekDates = $this->getCurrentWeekDates();
-
-        $firstDate = $weekDates['firstDate'];
-        $lastDate = $weekDates['lastDate'];
-
-        // Récupérer et afficher l'emploi du temps
-        $events = $this->eventModel->retrieveIcs($groupName, $firstDate, $lastDate);
-        $this->scheduleView->displaySchedule($events);
-    }
-
-    private function getCurrentWeekDates() {
-        $currentWeek = $_SESSION['currentWeek'] ?? date('Y-m-d');
-        $firstDate = date('Y-m-d', strtotime('Monday this week', strtotime($currentWeek)));
-        $lastDate = date('Y-m-d', strtotime('Sunday this week', strtotime($currentWeek)));
-
-        return ['firstDate' => $firstDate, 'lastDate' => $lastDate];
+        // Rediriger vers la méthode d'affichage de l'emploi du temps
+        $this->displayGroupSchedule2();
     }
 
 
 
 
+    //le bloc en dessous est un test d'url que jai trouvé sur internet qui permet de "tester" un url
+
+    /*$url = $this->eventModel->generateIcsUrl('BUT2gb', '2024-01-08', '2024-01-12');
+    echo $url; // echo l'URL pour le vérifier, puis le copiez collé et posez sur un terminal
+    avec cet ligne de commande :
+        curl -o test.ics -L "https://ade-web-consult.univ-amu.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?
+        projectId=8&resources=8382&calType=ical&firstDate=2023-01-01&lastDate=2023-01-07"*/
 
 
 
 
-    //Cette fonction affiche l'emploie du temps du groupe de la current semaine mais y'a pas le changement de semaine
-    public function displayGroupScheduleFonctionelSansWeekChangement($selectedGroups) {
 
-        // Obtenez la semaine actuelle ou une semaine spécifiée
-        $weekDates = $this->getCurrentWeek();
-        $firstDate = $weekDates['firstDate'];
-        $lastDate = $weekDates['lastDate'];
-
-        try {
-            // Récupère les événements pour les groupes sélectionnés et les dates spécifiées
-            $events = $this->eventModel->retrieveIcs($selectedGroups, $firstDate, $lastDate);
-            $this->scheduleView->displaySchedule($events);
-        } catch (\Exception $e) { // Assurez-vous d'avoir le bon namespace pour Exception
-            $this->scheduleView->displayError($e->getMessage());
-        }
-    }
 }

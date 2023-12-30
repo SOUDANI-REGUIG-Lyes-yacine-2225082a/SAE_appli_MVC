@@ -8,12 +8,12 @@ class Router {
 }
 
     public function dispatch($action) {
-        if ($action == 'navigateWeek') {
-            // Traitez l'action navigateWeek séparément
-            $controller = new BaseScheduleController;
-            $controller->updateWeekDates();
+        $controller = new BaseScheduleController();
+
+        if ($action == 'prevWeek' || $action == 'nextWeek') {
+            $controller->handleWeekNavigation();
         }
-        elseif (array_key_exists($action, $this->routes)) {
+    elseif (array_key_exists($action, $this->routes)) {
         $controllerName = $this->routes[$action]['controller'];
         $methodName = $this->routes[$action]['method'];
         $controller = new $controllerName;

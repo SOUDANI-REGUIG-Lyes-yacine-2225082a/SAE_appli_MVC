@@ -5,14 +5,13 @@ require_once 'vendor/autoload.php';
 require_once 'Router.php';
 
 use src\controller\HomeController;
-use src\controller\ScheduleController;
 use src\controller\choixRoueController;
 use src\controller\choixBUT3Controller;
 use src\controller\choixBUT1Controller;
 use src\controller\choixBUT2Controller;
 use src\controller\BaseScheduleController;
 
-use test;
+
 
 
     $router = new Router();

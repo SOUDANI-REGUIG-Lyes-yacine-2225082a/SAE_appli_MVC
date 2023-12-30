@@ -7,8 +7,9 @@ class ScheduleView {
     public function displaySchedule($events) {
         ob_start();
         // Ajoutez ici le formulaire de navigation
-        echo '<form action="" method="GET">';
+        echo '<form method="GET" action="/index.php">'; // Corrigez la balise 'form'
         echo '<input type="hidden" name="action" value="navigateWeek">';
+        // Utilisez directement $groupName ici, pas besoin de PHP ouvert à nouveau
         echo '<input type="hidden" name="group" value="<?php echo htmlspecialchars($groupName); ?>">';
         echo '<button type="submit" name="week" value="prevWeek">Semaine précédente</button>';
         echo '<button type="submit" name="week" value="nextWeek">Semaine suivante</button>';
