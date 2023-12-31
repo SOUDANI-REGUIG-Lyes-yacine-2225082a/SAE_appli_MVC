@@ -48,7 +48,7 @@ use src\controller\BaseScheduleController;
 
 
 
-    $action = $_GET['action'] ?? 'home'; // 'home' est l'action par défaut
+    $group = $_GET['group'] ?? 'home'; // 'home' est le group par défaut
 
-    $router->dispatch($action);
+    $router->dispatch($group);
 ?>

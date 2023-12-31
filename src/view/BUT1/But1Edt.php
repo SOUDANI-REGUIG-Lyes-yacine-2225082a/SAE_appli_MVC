@@ -11,19 +11,19 @@
 </head>
 <body>
 <img id="image_up" src="../../../_assets/images/BUT1_Up.png">
-<a href="index.php?action=BUT1g1">
+<a href="index.php?group=BUT1g1">
 <img id="G1" src="../../../_assets/images/B1G1.png">
 </a>
-<a href="index.php?action=BUT1g2">
+<a href="index.php?group=BUT1g2">
 <img id="G2" src="../../../_assets/images/B1G2b.png">
 </a>
-<a href="index.php?action=BUT1g3">
+<a href="index.php?group=BUT1g3">
 <img id="G3" src="../../../_assets/images/B1G3b.png">
 </a>
-<a href="index.php?action=BUT1g4">
+<a href="index.php?group=BUT1g4">
 <img id="G4" src="../../../_assets/images/B1G4b.png">
 </a>
-<a  href="index.php?action=roueDeChoix" >
+<a  href="index.php?group=roueDeChoix" >
     <img id="return" src="../../../_assets/images/return.png">
 </a>
 <img id="logo" src="../../../_assets/images/logo.png" alt="Logo">

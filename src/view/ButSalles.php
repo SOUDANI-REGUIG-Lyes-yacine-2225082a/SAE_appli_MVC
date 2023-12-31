@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<a href="index.php?action=roueDeChoix">
+<a href="index.php?group=roueDeChoix">
     <img id="return" src="../../_assets/images/return.png">
 </a>
 

@@ -12,7 +12,7 @@
     <img id="image_up" src="../../../_assets/images/B1G1_Up.png">
     <p class="text">Groupe 1</p>
 </div>
-<a  href="index.php?action=but1" >
+<a  href="index.php?group=but1" >
     <img id="return" src="../../../_assets/images/return.png">
 </a>
 <img id="logo" src="../../../_assets/images/logo.png" alt="Logo">

@@ -22,8 +22,9 @@ class BaseScheduleController {
 
     //CELUI LA C'EST LE BON QUI MARHCE SANS PARAMETRE DE GROUPE
     //fonction principale qui affiche les edts
-    public function displayGroupSchedule2() {
-        $groupName = $_GET['action'];
+    public function displayGroupSchedule2()
+    {
+        $groupName = $_GET['group'];
 
         $weekDates = $this->getCurrentWeek();
         $firstDate = $weekDates['firstDate'];
@@ -31,23 +32,24 @@ class BaseScheduleController {
 
         // Récupérer et afficher l'emploi du temps
         $events = $this->eventModel->retrieveIcs($groupName, $firstDate, $lastDate);
-        $this->scheduleView->displaySchedule($events);
+        $this->scheduleView->displaySchedule($events, $groupName);
     }
 
 
     //fonction fonctionnelle lol, bref elle marche mais ya un parametre de groupe
     // je garde au cas où jen ai besoin pour les navigatins semaine
-    public function displayGroupScheduleFonctionelSansWeekChangement($selectedGroups) {
+    public function displayGroupScheduleFonctionelSansWeekChangement($selectedGroups, $firstDate, $lastDate) {
 
         // Obtenez la semaine actuelle ou une semaine spécifiée
-        $weekDates = $this->getCurrentWeek();
+        /*$weekDates = $this->getCurrentWeek();
         $firstDate = $weekDates['firstDate'];
         $lastDate = $weekDates['lastDate'];
+*/
 
         try {
             // Récupère les événements pour les groupes sélectionnés et les dates spécifiées
             $events = $this->eventModel->retrieveIcs($selectedGroups, $firstDate, $lastDate);
-            $this->scheduleView->displaySchedule($events);
+            $this->scheduleView->displaySchedule($events, $selectedGroups);
         } catch (\Exception $e) { 
             $this->scheduleView->displayError($e->getMessage());
         }
@@ -69,7 +71,7 @@ class BaseScheduleController {
         $firstDate = date('Y-m-d', strtotime('Monday this week', strtotime($week)));
         $lastDate = date('Y-m-d', strtotime('Sunday this week', strtotime($week)));
 
-        return ['firstDate' => $firstDate, 'lastDate' => $lastDate];
+        return['firstDate' => $firstDate, 'lastDate' => $lastDate];
     }
 
 
@@ -81,6 +83,7 @@ class BaseScheduleController {
     //TODO: la faire fonctionné ptdrr
     public function handleWeekNavigation() {
         $currentWeek = $_SESSION['currentWeek'];
+
 
         if (isset($_GET['week'])) {
             switch ($_GET['week']) {
@@ -94,10 +97,15 @@ class BaseScheduleController {
         }
 
         $_SESSION['currentWeek'] = $currentWeek;
+        $weekDates = $this->getCurrentWeek();
+        $firstDate = $weekDates['firstDate'];
+        $lastDate = $weekDates['lastDate'];
         $groupName = $_GET['group'];
 
+        echo $firstDate;
+        echo $lastDate;
         // Rediriger vers la méthode d'affichage de l'emploi du temps
-        $this->displayGroupScheduleFonctionelSansWeekChangement($groupName);
+        //$this->displayGroupScheduleFonctionelSansWeekChangement($groupName, $firstDate, $lastDate);
     }
 
 

@@ -25,7 +25,7 @@
     <div class="top-right-image">
     </div>
     <div class="image-button">
-        <a href="index.php?action=roueDeChoix">
+        <a href="index.php?group=roueDeChoix">
             <img src="../../_assets/images/Home_button.png" width="300" height="225" id="homeButton" onclick="changeText()">
         </a>
     </div>

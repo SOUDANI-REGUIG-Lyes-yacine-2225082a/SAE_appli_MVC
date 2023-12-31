@@ -11,7 +11,7 @@
 <div class="container">
     <img id="image_up" src="../../../_assets/images/GB_UP.png">
 </div>
-<a  href="index.php?action=but2" >
+<a  href="index.php?group=but2" >
     <img id="return" src="../../../_assets/images/return.png">
 </a>
 <img id="logo" src="../../../_assets/images/logo.png" alt="Logo">

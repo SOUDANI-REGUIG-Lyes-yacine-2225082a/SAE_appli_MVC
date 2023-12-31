@@ -8,19 +8,19 @@
     <link rel="stylesheet" href="../../../_assets/styles/PageCommune.css">
 </head>
 <body>
-<a href="index.php?action=But2Edt">
+<a href="index.php?group=But2Edt">
     <img id="image_up" src="../../../_assets/images/BUT1_Up.png">
 </a>
-<a href="index.php?action=BUT2ga1">
+<a href="index.php?group=BUT2ga1">
     <img id="GA1" src="../../../_assets/images/B2GA2.png">
 </a>
-<a href="index.php?action=BUT2ga2">
+<a href="index.php?group=BUT2ga2">
     <img id="GA2" src="../../../_assets/images/B2GA2.png">
 </a>
-<a href="index.php?action=BUT2gb">
+<a href="index.php?group=BUT2gb">
     <img id="GB" src="../../../_assets/images/B2GB.png">
 </a>
-<a  href="index.php?action=roueDeChoix" >
+<a  href="index.php?group=roueDeChoix" >
     <img id="return" src="../../../_assets/images/return.png">
 </a>
 <img id="logo" src="../../../_assets/images/logo.png" alt="Logo">

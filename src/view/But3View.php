@@ -9,20 +9,20 @@
     <link rel="stylesheet" href="../../_assets/styles/PageCommune.css">
 </head>
 <body>
-<a href="index.php?action=BUT3Annee">
+<a href="index.php?group=BUT3Annee">
     <img id="image_BUT3" src="../../_assets/images/BUT3_dmi.png"">
 </a>
-<a href="index.php?action=BUT3ga1">
+<a href="index.php?group=BUT3ga1">
     <img id="image_GA1" src="../../_assets/images/B2GA1.png"
 </a>
-<a href="index.php?action=BUT3gb">
+<a href="index.php?group=BUT3gb">
     <img id="image_GB" src="../../_assets/images/B2GB.png">
 </a>
-<a href="index.php?action=BUT3ga2">
+<a href="index.php?group=BUT3ga2">
 <img id="image_GA2" src="../../_assets/images/B2GA2.png">
 </a>
 
-<a  href="index.php?action=roueDeChoix" >
+<a  href="index.php?group=roueDeChoix" >
     <img id="return" src="../../_assets/images/return.png">
 </a>
 

@@ -1,23 +1,32 @@
-<!-- le layout contient des éléements qui vont apparaitre plusieurs fois dans differentes, pages ont pourrait
-mmettre le logo mais jai la flemme, je rajoute juste pour les edt-->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emploi du temps</title>
-
+    <title>Emploie du temps</title>
     <link rel="stylesheet" href="../../_assets/styles/schedule.css">
+    <link rel="stylesheet" href="../../_assets/styles/return.css">
 
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
 
-<!-- Oui, c'est normal si ya une erreur, enleve pas, c'est grace à cette echo qu'on affiche les edt.
- Tu vas dans le fihier SheduleView.php, dedans ya la déclaration de $content, elle est pas là c'est pour ca ya une erreur-->
+<!-- PHP content -->
 <?php
-    echo $content;
+echo $content;
 ?>
 
-<!-- On peut rajouter le footer et le header dans ce fichier et l'appelez dans les fichers. -->
+
+<a  href="index.php?group=roueDeChoix" >
+    <img id="return" src="../../_assets/images/return.png">
+</a>
+
+
+<!-- Optional: Bootstrap JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </body>
 </html>

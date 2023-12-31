@@ -4,17 +4,18 @@ namespace src\view;
 
 class ScheduleView {
 
-    public function displaySchedule($events) {
+    public function displaySchedule($events, $groupName) {
         ob_start();
         // Ajoutez ici le formulaire de navigation
-        echo '<form method="GET" action="/index.php">'; // Corrigez la balise 'form'
+        echo '<form method="GET" action="/index.php">';
         echo '<input type="hidden" name="action" value="navigateWeek">';
-        // Utilisez directement $groupName ici, pas besoin de PHP ouvert à nouveau
-        echo '<input type="hidden" name="group" value="<?php echo htmlspecialchars($groupName); ?>">';
+        if ($groupName=='navigateWeek'){
+            echo 'navigateWeek ne peut pas etre un group';
+        }
+        echo '<input type="hidden" name="group" value="' . htmlspecialchars($groupName) . '">';
         echo '<button type="submit" name="week" value="prevWeek">Semaine précédente</button>';
         echo '<button type="submit" name="week" value="nextWeek">Semaine suivante</button>';
         echo '</form>';
-
 
         echo '<div class="schedule-container">';
         echo '<table class="schedule-table">';

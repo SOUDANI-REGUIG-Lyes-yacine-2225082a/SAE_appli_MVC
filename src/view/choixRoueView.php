@@ -12,22 +12,22 @@
 </head>
 <body>
 <div class="return-image">
-    <a href="index.php?action=home">
+    <a href="index.php?group=home">
         <img src="../../_assets/images/retour.png" id="retour" width="225" height="225">
     </a>
-    <a href="index.php?action=but3">
+    <a href="index.php?group=but3">
         <img id="BUT3" src="../../_assets/images/But3.png" width="155" height="140">
     </a>
-    <a href="index.php?action=but2">
+    <a href="index.php?group=but2">
         <img id="BUT2" src="../../_assets/images/But2.png" width="145" height="130">
     </a>
 
     <img id="enseignant" src="../../_assets/images/enseignant.png" width="125" height="120">
 
-    <a href="index.php?action=salles">
+    <a href="index.php?group=salles">
         <img id="SallesInformatique" src="../../_assets/images/SallesInformatique.png" width="145" height="135">
     </a>
-    <a href="index.php?action=but1">
+    <a href="index.php?group=but1">
         <img id="BUT1" src="../../_assets/images/But1.png" width="125" height="120">
     </a>
 </div>
