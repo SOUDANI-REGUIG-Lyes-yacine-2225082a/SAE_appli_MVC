@@ -1,0 +1,71 @@
+#return {
+    width: 90px;
+    height: auto;
+    display: block;
+    position: absolute;
+    left: 1430px;
+    top: 620px;
+}
+/* Vos styles pour les flip cards */
+.flip-card {
+    background-color: transparent;
+    width: 200px;
+    height: 200px;
+    perspective: 1000px;
+    margin: 20px;
+    float: left;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+/* Les styles pour la face avant (Salle de TD normaux) */
+.flip-card-blue .flip-card-front {
+    background-color: #4CAF50; /* Vert */
+    color: white;
+}
+
+/* Les styles pour la face arrière (Salle de TD normaux) */
+.flip-card-blue .flip-card-back {
+    background-color: #2196F3; /* Bleu */
+    color: white;
+}
+
+/* Les styles pour la face avant (Salles Machines) */
+.flip-card-orange .flip-card-front {
+    background-color: #FF9800; /* Orange */
+    color: white;
+}
+
+/* Les styles pour la face arrière (Salles Machines) */
+.flip-card-orange .flip-card-back {
+    background-color: #9C27B0; /* Violet */
+    color: white;
+}
