@@ -53,5 +53,5 @@
 
 /* Correction d'éventuels problèmes de hauteur de l'élément .container */
 .container {
-    height: auto;
+    height: 150px;
 }
