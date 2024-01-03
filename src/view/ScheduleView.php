@@ -15,6 +15,7 @@ class ScheduleView {
         echo '<input type="hidden" name="group" value="' . htmlspecialchars($groupName) . '">';
         echo '<button type="submit" name="week" value="prevWeek">Semaine précédente</button>';
         echo '<button type="submit" name="week" value="nextWeek">Semaine suivante</button>';
+
         echo '</form>';
 
         echo '<div class="schedule-container">';
