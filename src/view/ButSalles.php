@@ -8,92 +8,10 @@
     <link rel="stylesheet" href="../../_assets/styles/ButS.css">
     <link rel="stylesheet" href="../../_assets/styles/PageCommune.css">
     <link rel="stylesheet" href="styles.css">
+    <script src="../../_assets/scripts/main.js"></script>
     <style>
-        /* Vos styles CSS */
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 30px; /* Augmentation de l'espace entre les cartes */
-            padding: 20px;
-        }
-
-        .flip-card {
-            background-color: transparent;
-            width: 180px; /* Réduction de la taille des cartes */
-            height: 110px; /* Réduction de la taille des cartes */
-            perspective: 1000px;
-            position: relative;
-            margin-bottom: 20px;
-        }
-
-        .flip-card-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            text-align: center;
-            transition: transform 0.6s;
-            transform-style: preserve-3d;
-            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-        }
-
-        .flip-card:hover .flip-card-inner {
-            transform: rotateY(180deg);
-        }
-
-        .flip-card-front {
-            background-color: #49abf1;
-            color: black;
-            font-size: 12px; /* Réduction de la taille du texte */
-            padding: 10px; /* Ajout de marge interne */
-            cursor: pointer; /* Curseur pointer */
-            border-radius: 10px; /* Coins arrondis */
-        }
-
-        .flip-card-back {
-            background-color: #fca808;
-            color: #000000;
-            transform: rotateY(180deg);
-            font-size: 12px; /* Réduction de la taille du texte */
-            padding: 10px; /* Ajout de marge interne */
-            border-radius: 10px; /* Coins arrondis */
-        }
-
-        /* Style des blocs orange et bleus */
-        .orange-blocks,
-        .blue-blocks {
-            display: none; /* Initialement cachés */
-            width: 1000px;
-            justify-content: center;
-            align-items: center;
-            position: absolute;
-            top: 250px; /* Descendus */
-            left: 50%;
-            transform: translateX(-50%);
-            padding: 30px;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Lueur blanche */
-        }
-
-        .orange-block,
-        .blue-block {
-            width: 600px; /* Largeur conservée */
-            height: 320px; /* Hauteur conservée */
-            margin: 25px;
-            border-radius: 20px; /* Coins arrondis */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Lueur noire */
-        }
-
-        .orange-block {
-            background-color: orange;
-            box-shadow: 0 0 10px rgba(255, 140, 0, 0.5); /* Lueur orange */
-        }
-
-        .blue-block {
-            background-color: #49abf1;
-            box-shadow: 0 0 10px rgba(73, 171, 241, 0.5); /* Lueur bleue */
-        }
+        /* Votre CSS ici */
+        /* ... (insérez votre CSS pour les cartes flip ici) */
     </style>
 </head>
 <body>
@@ -136,20 +54,6 @@
     <div class="blue-block"></div>
     <div class="blue-block"></div>
 </div>
-
-<script>
-    function toggleBlocks(showId, hideId) {
-        var showBlocks = document.getElementById(showId);
-        var hideBlocks = document.getElementById(hideId);
-
-        if (showBlocks.style.display === 'none') {
-            showBlocks.style.display = 'flex';
-            hideBlocks.style.display = 'none';
-        } else {
-            showBlocks.style.display = 'none';
-        }
-    }
-</script>
 
 </body>
 </html>

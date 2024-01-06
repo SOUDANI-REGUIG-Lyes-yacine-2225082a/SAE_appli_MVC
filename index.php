@@ -41,7 +41,7 @@ use src\controller\BaseScheduleController;
     $router->addRoute('BUT3ga1', choixBUT3Controller::class, 'displayBut3GA1');
     $router->addRoute('BUT3ga2', choixBUT3Controller::class, 'displayBut3GA2');
     $router->addRoute('BUT3gb', choixBUT3Controller::class, 'displayBut3GB');
-
+    $router->addRoute('Enseignant', choixRoueController::class, 'displayButEnseignants');
     $router->addRoute('navigateWeek', BaseScheduleController::class, 'handleWeekNavigation');
 
 
