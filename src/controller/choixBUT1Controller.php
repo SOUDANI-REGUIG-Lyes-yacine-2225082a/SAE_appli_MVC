@@ -14,7 +14,6 @@ class choixBUT1Controller extends BaseScheduleController {
     public function displayBut1Entier(){
         include "src/view/BUT1/But1Edt.php";
         $this->displayGroupSchedule2();
-
     }
 
     /**
@@ -35,7 +34,6 @@ class choixBUT1Controller extends BaseScheduleController {
     public function displayBut1G2(){
         include "src/view/BUT1/But1G2.php";
         $this->displayGroupSchedule2();
-
     }
 
     /**
@@ -56,6 +54,5 @@ class choixBUT1Controller extends BaseScheduleController {
     public function displayBut1G4(){
         include "src/view/BUT1/But1G4.php";
         $this->displayGroupSchedule2();
-
     }
 }
