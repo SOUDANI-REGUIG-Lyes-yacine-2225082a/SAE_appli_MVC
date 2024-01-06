@@ -20,6 +20,7 @@
                 Bienvenue au département
                 <tspan x="50%" dy="1.2em">Informatique</tspan>
             </text>
+
         </svg>
     </div>
     <div class="top-right-image">

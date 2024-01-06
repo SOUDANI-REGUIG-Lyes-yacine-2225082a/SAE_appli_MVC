@@ -34,11 +34,9 @@ body {
     transform-style: preserve-3d;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
-
 .flip-card:hover .flip-card-inner {
     transform: rotateY(180deg);
 }
-
 .flip-card-front {
     background-color: #49abf1;
     color: black;
@@ -47,7 +45,6 @@ body {
     cursor: pointer; /* Curseur pointer */
     border-radius: 10px; /* Coins arrondis */
 }
-
 .flip-card-back {
     background-color: #fca808;
     color: #000000;
@@ -56,7 +53,6 @@ body {
     padding: 10px; /* Ajout de marge interne */
     border-radius: 10px; /* Coins arrondis */
 }
-
 /* Style des blocs orange et bleus */
 .orange-blocks,
 .blue-blocks {
@@ -71,7 +67,6 @@ body {
     padding: 30px;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Lueur blanche */
 }
-
 .orange-block,
 .blue-block {
     width: 600px; /* Largeur conservée */
@@ -80,12 +75,10 @@ body {
     border-radius: 20px; /* Coins arrondis */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Lueur noire */
 }
-
 .orange-block {
     background-color: orange;
     box-shadow: 0 0 10px rgba(255, 140, 0, 0.5); /* Lueur orange */
 }
-
 .blue-block {
     background-color: #49abf1;
     box-shadow: 0 0 10px rgba(73, 171, 241, 0.5); /* Lueur bleue */

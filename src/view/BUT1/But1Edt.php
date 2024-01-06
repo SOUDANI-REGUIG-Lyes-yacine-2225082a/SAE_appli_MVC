@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../../../_assets/styles/PageCommune.css">
 </head>
 <body>
+
 <img id="image_up" src="../../../_assets/images/BUT1_Up.png">
 <a href="index.php?group=BUT1g1">
 <img id="G1" src="../../../_assets/images/B1G1.png">

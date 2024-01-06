@@ -3,7 +3,6 @@ session_start();
 
 require_once 'vendor/autoload.php';
 require_once 'Router.php';
-
 use src\controller\HomeController;
 use src\controller\choixRoueController;
 use src\controller\choixBUT3Controller;
@@ -11,10 +10,7 @@ use src\controller\choixBUT1Controller;
 use src\controller\choixBUT2Controller;
 use src\controller\BaseScheduleController;
 
-
-
-
-    $router = new Router();
+$router = new Router();
 
 // Ajoutez les routes ici
     $router->addRoute('home', HomeController::class, 'displayHome');
