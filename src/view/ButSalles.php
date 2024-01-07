@@ -9,36 +9,17 @@
     <link rel="stylesheet" href="../../_assets/styles/PageCommune.css">
     <link rel="stylesheet" href="styles.css">
     <script src="../../_assets/scripts/main.js"></script>
-    <style>
-        /* Votre CSS ici */
-        /* ... (insérez votre CSS pour les cartes flip ici) */
-    </style>
 </head>
 <body>
 
-<!-- Première carte - Salle de TD normaux -->
-<div class="flip-card" onclick="toggleBlocks('orangeBlocks', 'blueBlocks')">
-    <div class="flip-card-inner">
-        <div class="flip-card-front">
-            <h2>Salles de TD</h2>
-        </div>
-        <div class="flip-card-back">
-            <p>Ce sont des salles de cours standard pour les séances de travaux dirigés.</p>
-        </div>
-    </div>
+<!-- Salle informatique -->
+<div class="orange-box" onclick="toggleBlocks('orangeBlocks', 'blueBlocks')">
+    <h2>Salle Informatique</h2>
 </div>
-<!-- Fin de la première carte -->
 
-<!-- Deuxième carte - Salles Machines -->
-<div class="flip-card" onclick="toggleBlocks('blueBlocks', 'orangeBlocks')">
-    <div class="flip-card-inner">
-        <div class="flip-card-front">
-            <h2>Salles Machines</h2>
-        </div>
-        <div class="flip-card-back">
-            <p>Ce sont des salles équipées de machines pour des travaux pratiques ou spécifiques.</p>
-        </div>
-    </div>
+<!-- Salle de TP -->
+<div class="blue-box" onclick="toggleBlocks('blueBlocks', 'orangeBlocks')">
+    <h2>Salle de TP</h2>
 </div>
 
 <!-- Blocs orange -->
@@ -55,5 +36,12 @@
     <div class="blue-block"></div>
 </div>
 
+<div class="image-button">
+    <a href="index.php?group=roueDeChoix">
+        <img id="return" src="../../_assets/images/return.png">
+    </a>
+</div>
+
+<script src="../../_assets/scripts/main.js"></script>
 </body>
 </html>
