@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../../_assets/styles/PageCommune.css">
 </head>
 <body>
-<a href="index.php?group=BUT2Annee">
+<a href="index.php?group=ButEnseignant">
     <img id="image_BUT2" src="../../_assets/images/BUT2_dmi.png">
 </a>
 

@@ -46,7 +46,7 @@ class choixRoueController
         include "src/view/ButSalles.php";
     }
 
-    public function displayEnseignants(){
+    public function displayButEnseignant(){
         include "src/view/ButEnseignant.php";
     }
 }

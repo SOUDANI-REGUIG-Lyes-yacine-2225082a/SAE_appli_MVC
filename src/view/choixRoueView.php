@@ -21,14 +21,14 @@
     <a href="index.php?group=but2">
         <img id="BUT2" src="../../_assets/images/But2.png" width="145" height="130">
     </a>
-    <a hreef="index.php?group=Enseignant">
-    <img id="enseignant" src="../../_assets/images/enseignant.png" width="125" height="120">
+    <a href="index.php?group=Enseignant">
+    <img id="ButEnseignant" src="../../_assets/images/enseignant.png" width="125" height="120">
     </a>
     <a href="index.php?group=salles">
         <img id="SallesInformatique" src="../../_assets/images/SallesInformatique.png" width="145" height="135">
     </a>
     <a href="index.php?group=but1">
-        <img id="BUT1" src="../../_assets/images/But1.png" width="125" height="120">
+        <img id="BUT1" src="../../_assets/images/But1.png" width="400" height="225">
     </a>
 
 </div>
