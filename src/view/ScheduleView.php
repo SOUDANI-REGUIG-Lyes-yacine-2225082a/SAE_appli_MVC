@@ -43,6 +43,11 @@ class ScheduleView {
         $content = ob_get_clean();
         include "layout.php";
     }
+    // ScheduleView.php
+    public function displayAvailableRooms($availableRooms) {
+        include 'ButSalles.php';
+    }
+
 
 
     public function displayError($message) {
