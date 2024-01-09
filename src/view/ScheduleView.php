@@ -44,6 +44,7 @@ class ScheduleView {
         include "layout.php";
     }
 
+
     public function displayError($message) {
         echo '<p>Error: ' . htmlspecialchars($message) . '</p>';
     }

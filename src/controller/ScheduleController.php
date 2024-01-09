@@ -72,4 +72,14 @@ class ScheduleController {
             $this->scheduleView->displayError($e->getMessage());
         }
     }
+    public function showAvailableRooms() {
+        try {
+            $availableRooms = $this->eventModel->getAvailableRooms();
+            $this->scheduleView->displayAvailableRooms($availableRooms);
+        } catch (Exception $e) {
+            $this->scheduleView->displayError($e->getMessage());
+        }
+    }
+
+
 }

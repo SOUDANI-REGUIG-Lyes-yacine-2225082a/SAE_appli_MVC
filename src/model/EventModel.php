@@ -25,7 +25,13 @@ class EventModel
         'BUT3gb'    => 45225,
         'BUT3Annee' => 8408
     ];
+    private $allRooms = [
+        "TD I-206", "TD I-205", "TD I-207", "TD I-208", "TD I-209", "TD I-212", "TD I-211", "TD I-214",
+        "TP I-102", "TD I-104", "TD I-107", "TP I-106", "TD I-109", "TD I-111", "TD I-110",
+        "TP I-002", "TP I-004", "TP I-009", "TP I-010"
+    ];
     private $events = [];
+    private $occupiedRooms = [];
 
     public function generateIcsUrl($groupName, $firstDate, $lastDate) {
         if (!isset($this->groupResourceIds[$groupName])) {
@@ -102,6 +108,7 @@ class EventModel
             'location' => $location,
             'description' => $this->prepareData($description)
         ];
+        $this->occupiedRooms[$dayOfWeek][$location][] = ['start' => $startTime, 'end' => $endTime];
     }
 
     public function retrieveIcs($resourceId, $firstDate, $lastDate) {
@@ -145,6 +152,26 @@ class EventModel
             return $this->events;
         }*/
 
+    public function getAvailableRooms() {
+        $currentDay = date('l');
+        $currentTime = date('H:i');
+
+        $availableRooms = $this->allRooms;
+
+        if (isset($this->occupiedRooms[$currentDay])) {
+            foreach ($this->occupiedRooms[$currentDay] as $room => $times) {
+                foreach ($times as $time) {
+                    if ($currentTime >= $time['start'] && $currentTime <= $time['end']) {
+                        if (($key = array_search($room, $availableRooms)) !== false) {
+                            unset($availableRooms[$key]);
+                        }
+                    }
+                }
+            }
+        }
+
+        return array_values($availableRooms);
+    }
 
 }
 

@@ -24,16 +24,25 @@
 
 <!-- Blocs orange -->
 <div class="orange-blocks" id="orangeBlocks">
-    <div class="orange-block"></div>
-    <div class="orange-block"></div>
-    <div class="orange-block"></div>
+    <!-- Ici, nous utilisons PHP pour boucler sur les salles disponibles et les afficher -->
+    <?php foreach ($availableRooms as $room): ?>
+        <!-- Vérifiez le type de salle et affichez-la dans le bloc correspondant -->
+        <?php if (strpos($room, 'TP') !== false): ?>
+            <!-- Bloc orange pour les salles TP -->
+            <div class="orange-block"><?php echo htmlspecialchars($room); ?></div>
+        <?php endif; ?>
+    <?php endforeach; ?>
 </div>
 
 <!-- Blocs bleus -->
 <div class="blue-blocks" id="blueBlocks">
-    <div class="blue-block"></div>
-    <div class="blue-block"></div>
-    <div class="blue-block"></div>
+    <!-- Continuation de la boucle PHP pour les salles de type différent -->
+    <?php foreach ($availableRooms as $room): ?>
+        <?php if (strpos($room, 'TD') !== false): ?>
+            <!-- Bloc bleu pour les salles TD -->
+            <div class="blue-block"><?php echo htmlspecialchars($room); ?></div>
+        <?php endif; ?>
+    <?php endforeach; ?>
 </div>
 
 <div class="image-button">
