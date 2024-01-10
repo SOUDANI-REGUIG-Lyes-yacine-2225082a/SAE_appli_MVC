@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,22 +7,24 @@
     <link rel="icon" type="image/png" href="../../_assets/images/favicon.png">
     <link rel="stylesheet" href="../../_assets/styles/ButS.css">
     <link rel="stylesheet" href="../../_assets/styles/PageCommune.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../../_assets/styles/ButS.css">
     <script src="../../_assets/scripts/main.js"></script>
 </head>
 <body>
 
-<!-- Salle informatique -->
-<div class="orange-box" onclick="toggleBlocks('orangeBlocks', 'blueBlocks')">
-    <h2>Salle Informatique</h2>
+<div class="button-container">
+    <!-- Salle informatique -->
+    <div class="orange-box" onclick="toggleBlocks('orangeBlocks', 'blueBlocks')">
+        <h2>Salle Informatique</h2>
+    </div>
+
+    <!-- Salle de TP -->
+    <div class="blue-box" onclick="toggleBlocks('blueBlocks', 'orangeBlocks')">
+        <h2>Salle de TD</h2>
+    </div>
 </div>
 
-<!-- Salle de TP -->
-<div class="blue-box" onclick="toggleBlocks('blueBlocks', 'orangeBlocks')">
-    <h2>Salle de TP</h2>
-</div>
-
-<!-- Blocs orange -->
+<!-- Blocs orange pour les salles de TP -->
 <div class="orange-blocks" id="orangeBlocks">
     <?php if (isset($availableRooms)): ?>
         <?php foreach ($availableRooms as $room): ?>
@@ -33,7 +35,7 @@
     <?php endif; ?>
 </div>
 
-<!-- Blocs bleus -->
+<!-- Blocs bleus pour les salles de TD -->
 <div class="blue-blocks" id="blueBlocks">
     <?php if (isset($availableRooms)): ?>
         <?php foreach ($availableRooms as $room): ?>
@@ -46,7 +48,7 @@
 
 <div class="image-button">
     <a href="index.php?group=roueDeChoix">
-        <img id="return" src="../../_assets/images/return.png">
+        <img id="return" src="../../_assets/images/return.png" alt="Return">
     </a>
 </div>
 
