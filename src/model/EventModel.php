@@ -220,11 +220,25 @@ class EventModel
 
     public function recupIcsSalles($url) {
         $url = html_entity_decode($url);
-        $icsContent = file_get_contents($url);
-        if ($icsContent === false) {
-            throw new Exception("Unable to retrieve ICS content.");
-        }
 
+        // Initialiser une session cURL
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); // Pour retourner le contenu téléchargé
+        curl_setopt($ch, CURLOPT_HEADER, false); // Pour ne pas inclure l'en-tête dans le contenu
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true); // Pour suivre les redirections
+        curl_setopt($ch, CURLOPT_MAXREDIRS, 10); // Nombre maximum de redirections à suivre
+        curl_setopt($ch, CURLOPT_TIMEOUT, 30); // Timeout de la requête
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // Désactiver la vérification SSL si nécessaire
+
+        // Exécuter la requête cURL
+        $icsContent = curl_exec($ch);
+        if (curl_errno($ch)) {
+            // Gérer l'erreur cURL
+            throw new Exception(curl_error($ch));
+        }
+        curl_close($ch);
+
+        // Traiter le contenu ICS
         $lines = explode("\n", $icsContent);
         foreach ($lines as $line) {
             if (strpos($line, 'BEGIN:VEVENT') !== false) {
@@ -239,6 +253,7 @@ class EventModel
             }
         }
     }
+
 
 }
 
