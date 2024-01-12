@@ -3,23 +3,7 @@
     margin: auto;
 }
 
-/* Pour les appareils mobiles */
-@media (max-width: 600px) {
-    .container {
-        width: 95%;
-    }
-    /* Autres styles spécifiques mobiles */
-}
 
-/* Pour les tablettes */
-@media (min-width: 601px) and (max-width: 1024px) {
-    /* Styles spécifiques aux tablettes */
-}
-
-/* Pour les ordinateurs de bureau */
-@media (min-width: 1025px) {
-    /* Styles spécifiques aux ordinateurs de bureau */
-}
 
 .return-image {
     position: relative;
@@ -33,17 +17,17 @@
 
 #retour {
     position: fixed;
-    top: 290px;
-    left: 695px;
+    top: 350px;
+    left: 835px;
     transform: translate(-50%, -50%);
 }
 
 #BUT3{
-    width: 185px;
+    width: 195px;
     height: auto;
     position: fixed; /* Ajout de la position absolue pour utiliser la propriété left */
-    left: 755px; /* Décalage de 600 pixels vers la droite */
-    top: 105px;
+    left: 835px; /* Décalage de 600 pixels vers la droite */
+    top: 135px;
     transform: translate(-50%, -50%);
 }
 
@@ -51,8 +35,8 @@
     width: 185px;
     height: auto;
     position: fixed; /* Ajout de la position absolue pour utiliser la propriété left */
-    left: 505px; /* Décalage de 600 pixels vers la droite */
-    top: 240px;
+    left: 605px; /* Décalage de 600 pixels vers la droite */
+    top: 320px;
     transform: translate(-50%, -50%);
 }
 /*BUT1*/
@@ -60,26 +44,27 @@
     width: 155px;
     height: auto;
     position: fixed; /* Ajout de la position absolue pour utiliser la propriété left */
-    left: 565px; /* Décalage de 600 pixels vers la droite */
-    top: 460px;
+    left: 665px; /* Décalage de 600 pixels vers la droite */
+    top: 540px;
     transform: translate(-50%, -50%);
 }
-#enseignant{
-    width: 155px;
+#ButEnseignant{
+    width: 175px;
     height: auto;
     position: fixed; /* Ajout de la position absolue pour utiliser la propriété left */
-    left: 805px; /* Décalage de 600 pixels vers la droite */
-    top: 490px;
+    left: 935px; /* Décalage de 600 pixels vers la droite */
+    top: 545px;
     transform: translate(-50%, -50%);
 
 }
 #SallesInformatique{
-    width: 165px;
+    width: 175px;
     height: auto;
     position: fixed; /* Ajout de la position absolue pour utiliser la propriété left */
-    left: 885px; /* Décalage de 600 pixels vers la droite */
-    top: 300px;
+    left: 1055px; /* Décalage de 600 pixels vers la droite */
+    top: 320px;
     transform: translate(-50%, -50%);
 }
+
 
 

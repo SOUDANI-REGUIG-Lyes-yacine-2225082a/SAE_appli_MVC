@@ -57,8 +57,15 @@ class BaseScheduleController {
         echo $lastDate;
         // Récupérer et afficher l'emploi du temps
         $events = $this->eventModel->retrieveIcs($groupName, $firstDate, $lastDate);
-        $this->scheduleView->displaySchedule($events, $groupName);
+
+        //$eventsByDayAndHour = $this->eventModel->getEventsStructuredByDayAndHour();
+
+        //error_log("EVENTS : " . print_r($eventsByDayAndHour, true));
+        $this->scheduleView->displaySchedule($events, $groupName,$currentWeek);
     }
+
+
+
 
 
     private function getCurrentWeekDates() {
@@ -68,6 +75,7 @@ class BaseScheduleController {
 
         return ['firstDate' => $firstDate, 'lastDate' => $lastDate];
     }
+
 
 
 

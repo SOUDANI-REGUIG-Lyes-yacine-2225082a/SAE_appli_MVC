@@ -83,8 +83,9 @@ class EventModel
         }
     }
 
-    private function processEvent($eventData) {
+    private function processEvent2($eventData) {
         $dayOfWeek = date('l', strtotime($eventData['DTSTART'])); // Convertit en jour de la semaine
+
         $startTime = date('H:i', strtotime($eventData['DTSTART'])); // Heure de début au format HH:mm
         $endTime = date('H:i', strtotime($eventData['DTEND'])); // Heure de fin au format HH:mm
         $summary = $eventData['SUMMARY'];
@@ -104,6 +105,50 @@ class EventModel
         ];
     }
 
+
+    private function processEvent($eventData)
+    {
+        //error_log(print_r($eventData, true)); // Log pour le débogage / Resultat = données bien traités, pb pas ici
+        $dayOfWeek = date('l', strtotime($eventData['DTSTART']));
+        $startTimestamp = strtotime($eventData['DTSTART']);
+        $endTimestamp = strtotime($eventData['DTEND']);
+        $summary = $eventData['SUMMARY'] ?? 'No summary';
+        $location = $eventData['LOCATION'] ?? 'No Location';
+        $description = $eventData['DESCRIPTION'] ?? 'No Description';
+
+        $startHour = (int)date('H', $startTimestamp);
+        $endHour = (int)date('H', $endTimestamp);
+        $endMinute = (int)date('i', $endTimestamp);
+
+        if ($endMinute > 0) {
+            ++$endHour;
+        }
+
+        $duration = ceil(($endTimestamp - $startTimestamp) / 3600);
+
+        if (!isset($this->events[$dayOfWeek])) {
+            $this->events[$dayOfWeek] = [];
+        }
+
+
+        $eventEntry = [
+            'start' => date('H:i', $startTimestamp),
+            'end' => date('H:i', $endTimestamp),
+            'summary' => $summary,
+            'location' => $location,
+            'description' => $this->prepareData($description),
+            'rowspan' => $duration
+        ];
+        //error_log("Event processed: " . print_r($eventEntry, true));
+        $this->events[$dayOfWeek][$startHour][] = $eventEntry;
+
+        /*
+        for ($hour = $startHour + 1; $hour < $endHour; $hour++) {
+            $this->events[$dayOfWeek][$hour][] = 'covered';
+        }*/
+    }
+
+
     public function retrieveIcs($resourceId, $firstDate, $lastDate) {
         $this->events = [];
 
@@ -122,6 +167,59 @@ class EventModel
         }
 
         return $this->events;
+    }
+
+    public function getEventsStructuredByDayAndHour() {
+        $structuredEvents = [];
+
+        // Parcourir tous les événements et les structurer
+        foreach ($this->events as $event) {
+            $startTimestamp = strtotime($event['DTSTART']);
+            $endTimestamp = strtotime($event['DTEND']);
+
+
+
+
+            //error_log("Start Timestamp: $startTimestamp\n");
+            //error_log("End Timestamp: $endTimestamp\n");
+
+
+            $startHour = (int)date('H', $startTimestamp);
+            $endHour = (int)date('H', $endTimestamp);
+
+            //error_log("Start Hour: $startHour\n");
+            //error_log("End Hour: $endHour\n");
+
+
+
+
+            $dayOfWeek = date('l', strtotime($event['start'])); // 'Monday', 'Tuesday', ...
+            //$startHour = (int)date('H', strtotime($event['start']));
+            //$endHour = (int)date('H', strtotime($event['end']));
+            $eventDurationHours = $endHour - $startHour;
+
+
+
+            // Assurez-vous que la clé pour le jour de la semaine existe
+            if (!array_key_exists($dayOfWeek, $structuredEvents)) {
+                $structuredEvents[$dayOfWeek] = [];
+            }
+
+            // Assurez-vous que la clé pour l'heure de début existe
+            if (!array_key_exists($startHour, $structuredEvents[$dayOfWeek])) {
+                $structuredEvents[$dayOfWeek][$startHour] = [];
+            }
+
+            // Ajouter l'événement avec la durée et les heures de début et de fin
+            $structuredEvents[$dayOfWeek][$startHour][] = [
+                'start' => $startHour,
+                'end' => $endHour,
+                'duration' => $eventDurationHours,
+                'details' => $event, // contient tous les détails de l'événement
+            ];
+        }
+        //error_log("Events by day and hour: " . print_r($this->events, true));
+        return $structuredEvents;
     }
 
 

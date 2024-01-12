@@ -1,6 +1,6 @@
 /* Retirons les styles de flex-container pour éviter le centrage vertical qui étend la page */
 .container {
-    width: 100%;
+    /**/width: 100%;
 }
 
 /* Assurons que le tableau prend toute la largeur et n'a pas de marges qui le poussent vers le bas */
@@ -8,16 +8,12 @@
     width: 100%;
     margin: 0; /* Aucune marge au-dessus ou en dessous du tableau */
     border-collapse: collapse;
+    table-layout: fixed;
 }
 
-.schedule-table th, .schedule-table td {
-    border: 1px solid #ddd;
-    padding: 15px;
-    text-align: center;
-}
 
 .schedule-table th {
-    background-color: deepskyblue;
+    background-color: #0099ff;
     color: white;
 }
 
@@ -54,4 +50,86 @@
 /* Correction d'éventuels problèmes de hauteur de l'élément .container */
 .container {
     height: 150px;
+}
+
+.schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed; /* Assure une largeur égale pour toutes les colonnes */
+}
+
+.schedule-table th, .schedule-table td {
+    border: 1px solid #ddd;
+    text-align: left;
+    vertical-align: top;
+    padding: 10px;
+    /*height: 50px;*/ /*GENE PAR RAPPORT A LA TAILLE */
+}
+
+.time-slot {
+    background-color: #f0f0f0; /* Couleur de fond pour les cellules horaires */
+    font-weight: bold;
+}
+
+.event {
+    margin-right: 5px; /* Espacement entre les événements */
+    padding: 5px;
+    background-color: #e7e7ff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: background-color 0.3s;
+    flex: 0 0 auto; /* Empêche l'événement de se redimensionner automatiquement */
+    max-width: calc(50% - 10px); /* Largeur maximale de 50% de la cellule, moins la marge */
+}
+
+.event:hover {
+    background-color: #d7d7ff; /* Couleur de fond au survol */
+}
+
+.schedule-event {
+    display: flex; /* Affiche les événements en ligne */
+    flex-wrap: wrap; /* Permet aux événements de passer à la ligne suivante si l'espace est insuffisant */
+    align-items: flex-start; /* Alignement vertical des éléments en haut */
+    justify-content: flex-start; /* Alignement horizontal à gauche */
+    overflow: hidden; /* Cache les éléments qui débordent */
+    width: 100%; /* Assure que le conteneur prend toute la largeur de la cellule */
+    min-height: 50px; /* Hauteur minimale pour s'assurer que la cellule n'est pas trop petite */
+}
+
+
+/* Styles pour les cellules vides */
+.schedule-empty {
+    background-color: white; /* Ou toute autre couleur de fond souhaitée */
+}
+
+/* Ajoutez des médias queries pour gérer la réactivité si nécessaire */
+
+
+
+
+
+
+
+
+.form-buttons  {
+    margin: 5px;
+    padding: 10px 15px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Styles des boutons "Semaine précédente" et "Semaine suivante" */
+.form-buttons button {
+    margin: 5px;
+    padding: 10px 15px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }

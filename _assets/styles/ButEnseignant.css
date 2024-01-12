@@ -1,9 +1,30 @@
-
+#image_BUT2 {
+    width: 315px;
+    height: auto;
+    display: block;
+    position: absolute; /* Utilisation de la position absolue pour fixer l'image */
+    left: 1315px; /* Positionnement spécifique à gauche */
+    top: 1px; /* Positionnement spécifique en haut */
+}
 #return {
     width: 90px;
     height: auto;
     display: block;
     position: absolute;
-    left: 1420px;
+    left: 1330px;
     top: 640px;
+}
+#textebar {
+    width: 90px;
+    height: auto;
+    display: block;
+    position: absolute;
+    left: 900px;
+    top: 640px;
+}
+.search
+{
+    position: relative;
+    width: 60px;
+    height: 60px;
 }

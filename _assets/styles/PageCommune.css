@@ -1,30 +1,12 @@
 .container {
-    width: 80%;
     margin: auto;
 }
 
-/* Pour les appareils mobiles */
-@media (max-width: 600px) {
-    .container {
-        width: 95%;
-    }
-    /* Autres styles spécifiques mobiles */
-}
-
-/* Pour les tablettes */
-@media (min-width: 601px) and (max-width: 1024px) {
-    /* Styles spécifiques aux tablettes */
-}
-
-/* Pour les ordinateurs de bureau */
-@media (min-width: 1025px) {
-    /* Styles spécifiques aux ordinateurs de bureau */
-}
-
+/* Styles généraux pour tous les appareils */
 #logo {
     width: 200px; /* ou la taille souhaitée */
     height: auto;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
 }
