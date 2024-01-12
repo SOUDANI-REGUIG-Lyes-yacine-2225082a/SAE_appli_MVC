@@ -106,6 +106,12 @@ class ScheduleView {
 
         return $weekDates;
     }
+    // ScheduleView.php
+    public function displayAvailableRooms($availableRooms) {
+        include 'ButSalles.php';
+    }
+
+
 
     private function isHourCoveredByRowspan($hour, $eventsByDayAndHour, $day) {
         foreach ($eventsByDayAndHour[$day] ?? [] as $eventStartHour => $eventsAtHour) {

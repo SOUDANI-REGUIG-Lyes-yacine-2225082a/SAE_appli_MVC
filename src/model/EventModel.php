@@ -23,9 +23,17 @@ class EventModel
         'BUT3ga1'   => 42523,
         'BUT3ga2'   => 42524,
         'BUT3gb'    => 45225,
-        'BUT3Annee' => 8408
+        'BUT3Annee' => 8408,
+
+        'TousLesGroupesPourLesSalles' => 6432
+    ];
+    private $allRooms = [
+        "TD I-206", "TD I-205", "TD I-207", "TD I-208", "TD I-209", "TD I-212", "TD I-211", "TD I-214",
+        "TP I-102", "TD I-104", "TD I-107", "TP I-106", "TD I-109", "TD I-111", "TD I-110",
+        "TP I-002", "TP I-004", "TP I-009", "TP I-010"
     ];
     private $events = [];
+    private $occupiedRooms = [];
 
     public function generateIcsUrl($groupName, $firstDate, $lastDate) {
         if (!isset($this->groupResourceIds[$groupName])) {
@@ -103,6 +111,7 @@ class EventModel
             'location' => $location,
             'description' => $this->prepareData($description)
         ];
+        $this->occupiedRooms[$dayOfWeek][$location][] = ['start' => $startTime, 'end' => $endTime];
     }
 
 
@@ -151,21 +160,16 @@ class EventModel
 
     public function retrieveIcs($resourceId, $firstDate, $lastDate) {
         $this->events = [];
-
         try {
-
             $url = $this->generateIcsUrl($resourceId, $firstDate, $lastDate);
-
             if (!is_string($url)) {
                 throw new Exception("L'URL générée n'est pas une chaîne valide.");
             }
-
             // Récupérer le contenu ICS à partir de l'URL
             $this->recupIcs($url);
         } catch (Exception $e) {
             echo "Erreur pour le resourceId $resourceId: " . $e->getMessage() . "\n";
         }
-
         return $this->events;
     }
 
@@ -242,6 +246,111 @@ class EventModel
 
             return $this->events;
         }*/
+    public function retrieveIcsSalles($firstDate, $lastDate) {
+        $this->events = [];
+
+        try {
+
+            $url = $this->generateIcsUrl('TousLesGroupesPourLesSalles', $firstDate, $lastDate);
+
+            if (!is_string($url)) {
+                throw new Exception("L'URL générée n'est pas une chaîne valide.");
+            }
+
+            // Récupérer le contenu ICS à partir de l'URL
+            $this->recupIcsSalles($url);
+        } catch (Exception $e) {
+            echo "Erreur pour le resourceId : " . $e->getMessage() . "\n";
+        }
+
+        return $this->events;
+    }
+
+    private function processEventSalles($eventData) {
+        $dayOfWeek = date('l', strtotime($eventData['DTSTART'])); // Convertit en jour de la semaine
+        $startTime = date('H:i', strtotime($eventData['DTSTART'])); // Heure de début au format HH:mm
+        $endTime = date('H:i', strtotime($eventData['DTEND'])); // Heure de fin au format HH:mm
+        $location = $eventData['LOCATION'];
+
+        if (!isset($this->events[$dayOfWeek])) {
+            $this->events[$dayOfWeek] = [];
+        }
+
+        $this->events[$dayOfWeek][] = [
+            'location' => $location,
+        ];
+        $locations = explode(',', $eventData['LOCATION']);
+        foreach ($locations as $location) {
+            $location = trim($location); // Enlève les espaces superflus
+            if (!empty($location)) {
+                $this->occupiedRooms[$dayOfWeek][$location][] = [
+                    'start' => $startTime,
+                    'end' => $endTime
+                ];
+            }
+        }
+
+
+        $this->occupiedRooms[$dayOfWeek][$location][] =
+            ['start' => $startTime, 'end' => $endTime];
+    }
+    public function getAvailableRooms() {
+        $currentDay = date('l');
+        $currentTime = date('H:i');
+
+        $availableRooms = $this->allRooms;
+
+        if (isset($this->occupiedRooms[$currentDay])) {
+            foreach ($this->occupiedRooms[$currentDay] as $room => $times) {
+                foreach ($times as $time) {
+                    if ($currentTime >= $time['start'] && $currentTime <= $time['end']) {
+                        if (($key = array_search($room, $availableRooms)) !== false) {
+                            unset($availableRooms[$key]);
+                        }
+                    }
+                }
+            }
+        }
+
+        return array_values($availableRooms);
+    }
+
+
+    public function recupIcsSalles($url) {
+        $url = html_entity_decode($url);
+
+        // Initialiser une session cURL
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); // Pour retourner le contenu téléchargé
+        curl_setopt($ch, CURLOPT_HEADER, false); // Pour ne pas inclure l'en-tête dans le contenu
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true); // Pour suivre les redirections
+        curl_setopt($ch, CURLOPT_MAXREDIRS, 10); // Nombre maximum de redirections à suivre
+        curl_setopt($ch, CURLOPT_TIMEOUT, 30); // Timeout de la requête
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // Désactiver la vérification SSL si nécessaire
+
+        // Exécuter la requête cURL
+        $icsContent = curl_exec($ch);
+        if (curl_errno($ch)) {
+            // Gérer l'erreur cURL
+            throw new Exception(curl_error($ch));
+        }
+        curl_close($ch);
+
+        // Traiter le contenu ICS
+        $lines = explode("\n", $icsContent);
+        foreach ($lines as $line) {
+            if (strpos($line, 'BEGIN:VEVENT') !== false) {
+                $event = [];
+            } elseif (strpos($line, 'END:VEVENT') !== false) {
+                $this->processEventSalles($event);
+            } elseif (isset($event)) {
+                if (strpos($line, ':') !== false) {
+                    list($key, $value) = explode(':', $line, 2);
+                    $event[$key] = $this->prepareData($value); // Appel à prepareData pour nettoyer la valeur
+                }
+            }
+        }
+    }
 
 
 }

@@ -7,12 +7,13 @@
     <link rel="icon" type="image/png" href="../../_assets/images/favicon.png">
     <link rel="stylesheet" href="../../_assets/styles/ButEnseignant.css">
     <link rel="stylesheet" href="../../_assets/styles/PageCommune.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <img id="image_BUT2" src="../../_assets/images/Enseignant_Left.png">
-<a  href="index.php?group=roueDeChoix" >
+<a href="index.php?group=roueDeChoix">
     <img id="return" src="../../_assets/images/return.png">
 </a>
-    <img  src="../../_assets/images/enseignant_rec.png">
+<img id="textebar" src="../../_assets/images/enseignant_rec.png">
 </body>
 </html>

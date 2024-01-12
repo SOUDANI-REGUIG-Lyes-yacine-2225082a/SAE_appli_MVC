@@ -3,7 +3,7 @@
     height: auto;
     display: block;
     position: absolute; /* Utilisation de la position absolue pour fixer l'image */
-    left: 1315px; /* Positionnement spécifique à gauche */
+    left: 1305px; /* Positionnement spécifique à gauche */
     top: 1px; /* Positionnement spécifique en haut */
 }
 #return {
@@ -11,7 +11,7 @@
     height: auto;
     display: block;
     position: absolute;
-    left: 1330px;
+    left: 900px;
     top: 640px;
 }
 #textebar {
@@ -27,4 +27,8 @@
     position: relative;
     width: 60px;
     height: 60px;
+    background: orange;
+    border-radius: 60px;
+    transition: 0.5s;
+    box-shadow: 0 0 0 5px orange;
 }
