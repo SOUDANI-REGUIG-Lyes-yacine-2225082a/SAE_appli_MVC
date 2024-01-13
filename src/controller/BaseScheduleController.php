@@ -62,6 +62,7 @@ class BaseScheduleController {
 
         //error_log("EVENTS : " . print_r($eventsByDayAndHour, true));
         $this->scheduleView->displaySchedule($events, $groupName,$currentWeek);
+
     }
 
 

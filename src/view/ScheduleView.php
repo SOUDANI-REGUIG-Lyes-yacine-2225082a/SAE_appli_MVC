@@ -2,10 +2,16 @@
 
 namespace src\view;
 
+use DateTime;
+
 class ScheduleView {
 
     public function displaySchedule($eventsByDayAndHour, $groupName, $currentWeekDate)
     {
+        ini_set('display_errors', '0'); // Ne pas afficher les erreurs
+        //error_reporting(E_ALL & ~E_DEPRECATED & ~E_WARNING);
+        error_reporting(E_ALL);
+
         ob_start();
         // Ajoutez ici le formulaire de navigation
         echo '<form method="GET" action="/index.php">';
@@ -14,8 +20,8 @@ class ScheduleView {
             echo 'navigateWeek ne peut pas etre un group';
         }
         echo '<input type="hidden" name="group" value="' . htmlspecialchars($groupName) . '">';
-        echo '<button type="submit" name="week" value="prevWeek">Semaine précédente</button>';
-        echo '<button type="submit" name="week" value="nextWeek">Semaine suivante</button>';
+        echo '<button type="submit" name="week" value="prevWeek" class="navigation-button">Semaine précédente</button>';
+        echo '<button type="submit" name="week" value="nextWeek" class="navigation-button">Semaine suivante</button>';
 
         echo '</form>';
 
@@ -33,11 +39,9 @@ class ScheduleView {
         echo '</tr>';
 
 
+        $coveredHours = [];
 
-
-
-
-// Création des rangées par heure
+        // Création des rangées par heure
         for ($hour = 8; $hour <= 18; $hour++) {
             echo '<tr>';
             echo '<td class="time-slot">' . str_pad($hour, 2, '0', STR_PAD_LEFT) . ':00</td>'; // Colonne des heures
@@ -45,44 +49,38 @@ class ScheduleView {
             foreach ($daysOfWeek as $day) {
                 $hourKey = str_pad($hour, 2, '0', STR_PAD_LEFT);
 
-                error_log("EVENTS : " . print_r($eventsByDayAndHour[$day][$hourKey], true));
+                // Vérifiez si des événements sont prévus pour cette heure et ce jour
+                if (isset($eventsByDayAndHour[$day][$hourKey]) && !empty($eventsByDayAndHour[$day][$hourKey])) {
+                    $eventsAtHour = $eventsByDayAndHour[$day][$hourKey];
+                    $totalEvents = count($eventsAtHour);
 
-                if (isset($eventsByDayAndHour[$day]) && isset($eventsByDayAndHour[$day][$hourKey])) {
+                    // Création de la cellule qui contiendra tous les événements
                     echo '<td class="schedule-day">';
-                    echo 'Ca marche';
+                    echo '<div style="display: flex; width: 100%; height: 100%;">';
 
-                    foreach ($eventsByDayAndHour[$day][$hourKey] as $event) {
-                        /*if ($event === 'covered') {
-                            continue; // Ignore les créneaux horaires couverts
-                        }
-                        // Si l'heure est couverte, ne rien afficher ou continuer à la prochaine itération.
-                        if ($this->isHourCoveredByRowspan($hour, $eventsByDayAndHour, $day)) {
-                            continue; // ou echo '<td class="covered"></td>';
-                        }*/
-
-                        if (is_array($event)) {
-                            // Affichage de chaque événement
-                            echo '<div class="event" style="rowspan:' . htmlspecialchars($event['rowspan']) . ';">';
-                            //error_log("ROWSPANNNN: " . print_r($event['rowspan']));
-                            //error_log("START : " . print_r($event['start']));
-                            echo htmlspecialchars($event['start'] . ' - ' . $event['end'] . ': ' . $event['summary']) . '<br>';
-                            echo htmlspecialchars($event['location']) . '<br>';
-                            echo htmlspecialchars($event['description']);
-                            echo '</div>'; // Fin de l'événement
-
-                        }
+                    // Boucle sur chaque événement pour cette heure et ce jour
+                    foreach ($eventsAtHour as $event) {
+                        // Affichage de chaque événement dans sa propre sous-cellule
+                        echo '<div style="flex: 1; border: 1px solid #ddd; padding: 5px; margin: 2px;">';
+                        echo htmlspecialchars($event['start'] . ' - ' . $event['end'] . ': ' . $event['summary']) . '<br>';
+                        echo htmlspecialchars($event['location']) . '<br>';
+                        echo htmlspecialchars($event['description']);
+                        echo '</div>';
                     }
 
-
+                    echo '</div>';
+                    echo '</td>';
                 } else {
+                    // Affiche une cellule vide si aucun événement
                     echo '<td class="schedule-day"></td>';
-
-                    //error_log("EVENTS : " . print_r($events, true));
                 }
             }
-                echo '</td>';
-            }
+
             echo '</tr>';
+        }
+
+
+
 
 
 
@@ -91,7 +89,7 @@ class ScheduleView {
 
         $content = ob_get_clean();
         include "layout.php";
-        }
+    }
 
 
 
@@ -101,7 +99,8 @@ class ScheduleView {
 
         foreach ($daysOfWeek as $index => $day) {
             $timeStamp = strtotime("+$index days", $baseTime);
-            $weekDates[$day] = strftime('%d/%m/%Y', $timeStamp);
+            //$weekDates[$day] = strftime('%d/%m/%Y', $timeStamp);
+            $weekDates[$day] = (new DateTime())->setTimestamp($timeStamp)->format('d/m/Y');
         }
 
         return $weekDates;

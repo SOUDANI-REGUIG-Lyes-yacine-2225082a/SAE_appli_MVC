@@ -133,3 +133,35 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+.navigation-form {
+    text-align: center;
+    margin-top: 20px; /* Ajustez la marge selon vos besoins */
+}
+
+.navigation-button {
+    background-color: blue; /* Couleur de fond bleue par défaut */
+    color: white; /* Couleur du texte */
+    padding: 15px 30px; /* Espacement interne du bouton agrandi */
+    font-size: 18px; /* Taille de la police */
+    cursor: pointer;
+    border: none;
+    border-radius: 5px; /* Coins arrondis */
+    margin-right: 10px; /* Espacement entre les boutons */
+    transition: background-color 0.3s; /* Ajoute une transition pour une animation fluide */
+}
+
+.navigation-button:hover {
+    background-color: orange; /* Couleur de fond orange au survol */
+}

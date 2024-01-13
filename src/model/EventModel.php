@@ -121,13 +121,20 @@ class EventModel
         $dayOfWeek = date('l', strtotime($eventData['DTSTART']));
         $startTimestamp = strtotime($eventData['DTSTART']);
         $endTimestamp = strtotime($eventData['DTEND']);
+
+
         $summary = $eventData['SUMMARY'] ?? 'No summary';
         $location = $eventData['LOCATION'] ?? 'No Location';
         $description = $eventData['DESCRIPTION'] ?? 'No Description';
 
-        $startHour = (int)date('H', $startTimestamp);
+
         $endHour = (int)date('H', $endTimestamp);
         $endMinute = (int)date('i', $endTimestamp);
+
+
+        $startHour = (int)date('H', $startTimestamp);
+        $formattedHour = str_pad($startHour, 2, '0', STR_PAD_LEFT);
+
 
         if ($endMinute > 0) {
             ++$endHour;
@@ -149,7 +156,7 @@ class EventModel
             'rowspan' => $duration
         ];
         //error_log("Event processed: " . print_r($eventEntry, true));
-        $this->events[$dayOfWeek][$startHour][] = $eventEntry;
+        $this->events[$dayOfWeek][$formattedHour][] = $eventEntry;
 
         /*
         for ($hour = $startHour + 1; $hour < $endHour; $hour++) {
