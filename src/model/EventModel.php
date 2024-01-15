@@ -6,6 +6,7 @@ use Exception;
 class EventModel
 {
 
+
     private $baseUrl = "https://ade-web-consult.univ-amu.fr/jsp/custom/modules/plannings/anonymous_cal.jsp";
     private $projectId = 8; // projectId fixe
     private $groupResourceIds = [

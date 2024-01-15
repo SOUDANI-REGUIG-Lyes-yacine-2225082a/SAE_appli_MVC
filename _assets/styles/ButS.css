@@ -25,11 +25,9 @@ body {
     text-align: center; /* Centrer le texte dans les boutons */
     font-size: 1.5em;
 }
-
 .orange-box {
     background-color: #ffa500; /* Orange color for TP rooms */
 }
-
 .blue-box {
     background-color: #0000ff; /* Blue color for TD rooms */
 }

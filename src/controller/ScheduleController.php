@@ -19,6 +19,7 @@ class ScheduleController {
     /**
      * @var ScheduleView La vue d'affichage de l'emploi du temps.
      */
+
     private $scheduleView;
     /**
      * Constructeur de la classe ScheduleController.

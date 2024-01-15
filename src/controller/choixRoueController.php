@@ -45,8 +45,6 @@ class choixRoueController
     public function showAvailableRooms(){
         include "src/view/ButSalles.php";
     }
-
-
     public function displayButEnseignant(){
         include "src/view/ButEnseignant.php";
     }
