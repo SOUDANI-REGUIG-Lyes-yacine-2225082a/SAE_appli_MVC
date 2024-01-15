@@ -24,7 +24,7 @@
     <a href="index.php?group=ButEnseignant">
         <img id="ButEnseignant" src="../../_assets/images/enseignant.png" width="125" height="120">
     </a>
-    <a href="index.php?group=salles">
+    <a href="index.php?group=sallesDisponibles">
         <img id="SallesInformatique" src="../../_assets/images/SallesInformatique.png" width="145" height="135">
     </a>
     <a href="index.php?group=but1">

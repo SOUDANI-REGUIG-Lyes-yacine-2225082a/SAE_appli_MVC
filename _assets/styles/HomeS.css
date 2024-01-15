@@ -1,0 +1,70 @@
+.container {
+    width: 80%;
+    margin: auto;
+}
+
+
+
+.return-image {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#retour {
+    position: fixed;
+    top: 350px;
+    left: 935px;
+    transform: translate(-50%, -50%);
+}
+
+#BUT3{
+    width: 195px;
+    height: auto;
+    position: fixed; /* Ajout de la position absolue pour utiliser la propriété left */
+    left: 935px; /* Décalage de 600 pixels vers la droite */
+    top: 135px;
+    transform: translate(-50%, -50%);
+}
+
+#BUT2{
+    width: 185px;
+    height: auto;
+    position: fixed; /* Ajout de la position absolue pour utiliser la propriété left */
+    left: 705px; /* Décalage de 600 pixels vers la droite */
+    top: 320px;
+    transform: translate(-50%, -50%);
+}
+/*BUT1*/
+#BUT1{
+    width: 155px;
+    height: auto;
+    position: fixed; /* Ajout de la position absolue pour utiliser la propriété left */
+    left: 765px; /* Décalage de 600 pixels vers la droite */
+    top: 540px;
+    transform: translate(-50%, -50%);
+}
+#ButEnseignant{
+    width: 175px;
+    height: auto;
+    position: fixed; /* Ajout de la position absolue pour utiliser la propriété left */
+    left: 1035px; /* Décalage de 600 pixels vers la droite */
+    top: 545px;
+    transform: translate(-50%, -50%);
+
+}
+#SallesInformatique{
+    width: 175px;
+    height: auto;
+    position: fixed; /* Ajout de la position absolue pour utiliser la propriété left */
+    left: 1155px; /* Décalage de 600 pixels vers la droite */
+    top: 320px;
+    transform: translate(-50%, -50%);
+}
+
+
+
