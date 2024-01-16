@@ -39,7 +39,8 @@
         <ul>
             <?php foreach ($professeurs as $profName): ?>
                 <li>
-                    <?= htmlspecialchars($profName) ?>
+                    <a href="index.php?controller=professeur&action=emploiDuTemps&profName=<?= urlencode($profName) ?>">                        <?= htmlspecialchars($profName) ?>
+                    </a>
                     (ID: <?= implode(', ', $profResourceIds[$profName]) ?>)
                 </li>
             <?php endforeach; ?>

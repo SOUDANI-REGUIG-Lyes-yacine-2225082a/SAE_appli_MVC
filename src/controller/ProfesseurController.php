@@ -25,14 +25,6 @@ class ProfesseurController
         }
     }
 
-
-
-
-
-
-
-
-
     public function index() {
         $message = '';
 
@@ -58,22 +50,23 @@ class ProfesseurController
         include 'src/view/ButEnseignant.php';
     }
 
-
-
-
-
-
-
     public function emploiDuTemps() {
-        $profId = $_GET['profId'] ?? '';
-        if (!$profId || !isset($this->model->profResourceIds[$profId])) {
+        $profName = $_GET['profName'] ?? '';
+        if (!$profName || !isset($this->model->profResourceIds[$profName])) {
             echo "Professeur non trouvé";
             return;
         }
 
-        $emploiDuTemps = $this->model->retrieveIcs($profId, '2024-01-01', '2024-12-31'); // Dates exemples
-        include '../view/ButEnseignant.php'; // Modifiez le chemin selon votre structure
+        $ids = $this->model->profResourceIds[$profName];
+        $events = $this->model->retrieveIcs($ids, '2024-01-01', '2024-12-31');
+
+        // Affichage de l'emploi du temps
+        $scheduleView = new \src\view\ScheduleView();
+        $scheduleView->displaySchedule($events, $profName);
     }
+
+
+
 
 
 }

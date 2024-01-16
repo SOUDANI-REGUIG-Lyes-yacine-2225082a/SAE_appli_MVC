@@ -9,6 +9,7 @@ use src\controller\choixRoueController;
 use src\controller\choixBUT3Controller;
 use src\controller\choixBUT1Controller;
 use src\controller\choixBUT2Controller;
+use src\controller\ProfesseurController;
 use src\controller\ScheduleController;
 
     $router = new Router();

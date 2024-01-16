@@ -1,14 +1,19 @@
 /* Retirons les styles de flex-container pour éviter le centrage vertical qui étend la page */
 .container {
-    /**/width: 100%;
+    width: 100%;
 }
 
 /* Assurons que le tableau prend toute la largeur et n'a pas de marges qui le poussent vers le bas */
 .schedule-table {
-    width: 100%;
-    margin: 0; /* Aucune marge au-dessus ou en dessous du tableau */
-    border-collapse: collapse;
-    table-layout: fixed;
+    max-height: 70vh; /* Réglez la hauteur maximale en fonction de vos besoins */
+    overflow-y: auto; /* Ajoutez une barre de défilement verticale si le contenu dépasse */
+}
+
+
+/* Réduction de la taille de la police pour les cellules du tableau */
+.schedule-table th, .schedule-table td {
+    padding: 8px; /* Ajustement de l'espacement interne */
+    font-size: 14px; /* Taille de police plus petite */
 }
 
 
@@ -33,7 +38,8 @@
 /* Styles adaptés pour les écrans étroits */
 @media screen and (max-width: 600px) {
     .schedule-table td {
-        padding: 10px;
+        padding: 5px;
+        font-size: 12px;
     }
 }
 
@@ -50,6 +56,12 @@
 /* Correction d'éventuels problèmes de hauteur de l'élément .container */
 .container {
     height: 150px;
+}
+
+/* Ajuster la largeur du conteneur du tableau */
+.container {
+    width: 80%; /* Réduire la largeur à 80% de la largeur de la page */
+    margin: 0 auto; /* Centrer le conteneur sur la page */
 }
 
 .schedule-table {
@@ -104,13 +116,6 @@
 
 /* Ajoutez des médias queries pour gérer la réactivité si nécessaire */
 
-
-
-
-
-
-
-
 .form-buttons  {
     margin: 5px;
     padding: 10px 15px;
@@ -134,17 +139,6 @@
     transition: background-color 0.3s ease;
 }
 
-
-
-
-
-
-
-
-
-
-
-
 .navigation-form {
     text-align: center;
     margin-top: 20px; /* Ajustez la marge selon vos besoins */
@@ -153,8 +147,8 @@
 .navigation-button {
     background-color: blue; /* Couleur de fond bleue par défaut */
     color: white; /* Couleur du texte */
-    padding: 15px 30px; /* Espacement interne du bouton agrandi */
-    font-size: 18px; /* Taille de la police */
+    padding: 10px 20px; /* Espacement interne du bouton agrandi */
+    font-size: 16px; /* Taille de la police */
     cursor: pointer;
     border: none;
     border-radius: 5px; /* Coins arrondis */

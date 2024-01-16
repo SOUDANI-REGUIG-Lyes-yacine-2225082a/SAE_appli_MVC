@@ -94,17 +94,19 @@ class ProfModel
         $this->occupiedRooms[$dayOfWeek][$location][] = ['start' => $startTime, 'end' => $endTime];
     }
 
-    public function retrieveIcs($resourceId, $firstDate, $lastDate) {
+    public function retrieveIcs($ids, $firstDate, $lastDate) {
         $this->events = [];
-        try {
-            $url = $this->generateIcsUrl($resourceId, $firstDate, $lastDate);
-            if (!is_string($url)) {
-                throw new Exception("L'URL générée n'est pas une chaîne valide.");
+        foreach ($ids as $id) {
+            try {
+                $url = $this->generateIcsUrl($id, $firstDate, $lastDate);
+                if (!is_string($url)) {
+                    throw new Exception("L'URL générée n'est pas une chaîne valide.");
+                }
+                // Récupérer le contenu ICS à partir de l'URL
+                $this->recupIcs($url);
+            } catch (Exception $e) {
+                echo "Erreur pour le resourceId $id: " . $e->getMessage() . "\n";
             }
-            // Récupérer le contenu ICS à partir de l'URL
-            $this->recupIcs($url);
-        } catch (Exception $e) {
-            echo "Erreur pour le resourceId $resourceId: " . $e->getMessage() . "\n";
         }
         return $this->events;
     }
