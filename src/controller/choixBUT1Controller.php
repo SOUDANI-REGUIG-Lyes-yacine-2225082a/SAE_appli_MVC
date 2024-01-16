@@ -27,6 +27,7 @@ class choixBUT1Controller extends BaseScheduleController {
         $this->displayGroupSchedule2();
     }
 
+
     /**
      * Affiche la vue But1G2.
      *

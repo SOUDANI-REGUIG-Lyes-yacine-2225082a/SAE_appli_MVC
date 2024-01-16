@@ -30,6 +30,7 @@ use src\controller\ScheduleController;
     $router->addRoute('BUT2ga2', choixBUT2Controller::class, 'displayBut2GA2');
     $router->addRoute('BUT2gb', choixBUT2Controller::class, 'displayBut2GB');
 
+
     $router->addRoute('BUT3Annee', choixBUT3Controller::class, 'displayBut3Entier');
     $router->addRoute('BUT3ga1', choixBUT3Controller::class, 'displayBut3GA1');
     $router->addRoute('BUT3ga2', choixBUT3Controller::class, 'displayBut3GA2');
