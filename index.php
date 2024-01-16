@@ -9,6 +9,7 @@ use src\controller\choixRoueController;
 use src\controller\choixBUT3Controller;
 use src\controller\choixBUT1Controller;
 use src\controller\choixBUT2Controller;
+use src\controller\ProfesseurController;
 use src\controller\ScheduleController;
 
     $router = new Router();
@@ -39,7 +40,11 @@ use src\controller\ScheduleController;
     $router->addRoute('salles', choixRoueController::class, 'displaySalles');
     $router->addRoute('sallesDisponibles', ScheduleController::class, 'showAvailableRooms');
 
-    $router->addRoute('ButEnseignant', choixRoueController::class, 'displayButEnseignant');
+    $router->addRoute('ButEnseignant', ProfesseurController::class, 'index');
+    $router->addRoute('professeur_liste', ProfesseurController::class, 'lister');
+    $router->addRoute('professeur_ajouter', ProfesseurController::class, 'ajouter');
+    $router->addRoute('professeur_emploi_du_temps', ProfesseurController::class, 'emploiDuTemps');
+
 
     $group = $_GET['group'] ?? 'home'; // 'home' est le group par défaut
     $router->dispatch($group);
