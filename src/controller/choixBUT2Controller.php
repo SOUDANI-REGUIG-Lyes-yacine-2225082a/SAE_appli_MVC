@@ -7,6 +7,7 @@ class choixBUT2Controller extends BaseScheduleController {
         include "src/view/BUT2/But2Edt.php";
         $this->displayGroupSchedule2();
     }
+
     public function displayBut2GA1(){
         include "src/view/BUT2/But2GA1.php";
         $this->displayGroupSchedule2();

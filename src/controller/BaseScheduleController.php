@@ -10,19 +10,21 @@ class BaseScheduleController {
     private EventModel $eventModel;
     private ScheduleView $scheduleView;
 
+
     public function __construct() {
         $this->eventModel = new EventModel();
         $this->scheduleView = new ScheduleView();
+
         if (!isset($_SESSION['currentWeek'])) {
-            $_SESSION['currentWeek'] = date('Y-m-d'); // Assurez-vous que cela définit correctement la date actuelle
+            $_SESSION['currentWeek'] = date('Y-m-d');
         }
 
     }
 
-
-    //CELUI LA C'EST LE BON QUI MARHCE SANS PARAMETRE DE GROUPE
     //fonction principale qui affiche les edts
     public function displayGroupSchedule2() {
+        ini_set('display_errors', '0'); // Ne pas afficher les erreurs
+        error_reporting(E_ALL & ~E_DEPRECATED & ~E_WARNING); //j'en pose partout comme ça je suis sur
         // Récupérer le nom du groupe
         $groupName = $_GET['group'];
 
@@ -57,22 +59,21 @@ class BaseScheduleController {
         echo $lastDate;
         // Récupérer et afficher l'emploi du temps
         $events = $this->eventModel->retrieveIcs($groupName, $firstDate, $lastDate);
-        $this->scheduleView->displaySchedule($events, $groupName);
+
+        //$eventsByDayAndHour = $this->eventModel->getEventsStructuredByDayAndHour();
+
+        //error_log("EVENTS : " . print_r($events, true));
+        $this->scheduleView->displaySchedule($events, $groupName, $currentWeek);
+
     }
 
-
-    private function getCurrentWeekDates() {
+    public function getCurrentWeekDates() {
         $currentWeek = $_SESSION['currentWeek'] ?? date('Y-m-d');
         $firstDate = date('Y-m-d', strtotime('Monday this week', strtotime($currentWeek)));
         $lastDate = date('Y-m-d', strtotime('Sunday this week', strtotime($currentWeek)));
 
         return ['firstDate' => $firstDate, 'lastDate' => $lastDate];
     }
-
-
-
-
-
 
 
 
@@ -83,24 +84,7 @@ class BaseScheduleController {
     avec cet ligne de commande :
         curl -o test.ics -L "https://ade-web-consult.univ-amu.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?
         projectId=8&resources=8382&calType=ical&firstDate=2023-01-01&lastDate=2023-01-07"*/
-/*
-    public function displayGroupScheduleFonctionelSansWeekChangement($selectedGroups) {
 
-        // Obtenez la semaine actuelle ou une semaine spécifiée
-        $weekDates = $this->getCurrentWeek();
-        $firstDate = $weekDates['firstDate'];
-        $lastDate = $weekDates['lastDate'];
-
-
-        try {
-            // Récupère les événements pour les groupes sélectionnés et les dates spécifiées
-            $events = $this->eventModel->retrieveIcs($selectedGroups, $firstDate, $lastDate);
-            $this->scheduleView->displaySchedule($events, $selectedGroups);
-        } catch (\Exception $e) {
-            $this->scheduleView->displayError($e->getMessage());
-        }
-    }
-*/
 
 
 

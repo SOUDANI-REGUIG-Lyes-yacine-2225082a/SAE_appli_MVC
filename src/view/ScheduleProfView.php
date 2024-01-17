@@ -4,13 +4,13 @@ namespace src\view;
 
 use DateTime;
 
-class ScheduleView {
+class ScheduleProfView {
 
     public function displaySchedule($eventsByDayAndHour, $groupName, $currentWeekDate)
     {
         ini_set('display_errors', '0'); // Ne pas afficher les erreurs
-        error_reporting(E_ALL & ~E_DEPRECATED & ~E_WARNING);
-        //error_reporting(E_ALL);
+        //error_reporting(E_ALL & ~E_DEPRECATED & ~E_WARNING);
+        error_reporting(E_ALL);
 
         ob_start();
 
@@ -22,21 +22,12 @@ class ScheduleView {
 
 
         $weekStartDate = $this->getWeekStartDate($currentWeekDate);
+        $previousWeekDate = date('Y-m-d', strtotime('last monday', strtotime($weekStartDate)));
+        $nextWeekDate = date('Y-m-d', strtotime('next monday', strtotime($weekStartDate)));
 
-        echo '<input type="hidden" name="group" value="' . htmlspecialchars($groupName) . '">';
-
-        // Calcul des lundis des semaines précédente et suivante
-        $previousWeekDate = date('Y-m-d', strtotime('last monday', strtotime( $weekStartDate)));
-        $nextWeekDate = date('Y-m-d', strtotime('next monday', strtotime( $weekStartDate)));
-
-        // Bouton et date pour la semaine précédente
-        echo '<button type="submit" name="week" value="prevWeek" class="navigation-button">Semaine précédente : </button>';
-        echo '<span style="margin-left: 10px;">' . date('j F Y', strtotime($previousWeekDate)) . '</span>';
-
-        // Bouton et date pour la semaine suivante
-        echo '<button type="submit" name="week" value="nextWeek" class="navigation-button" style="margin-left: 30px;">Semaine suivante : </button>';
-        echo '<span style="margin-left: 10px;">' . date('j F Y', strtotime($nextWeekDate)) . '</span>';
-
+        // Boutons de navigation de semaine avec les nouveaux liens
+        echo '<a href="index.php?group=professeur&profName=' . urlencode($groupName) . '&week=prevWeek" class="navigation-button">Semaine précédente : ' . date('j F Y', strtotime($previousWeekDate)) . '</a>';
+        echo '<a href="index.php?group=professeur&profName=' . urlencode($groupName) . '&week=nextWeek" class="navigation-button" style="margin-left: 30px;">Semaine suivante : ' . date('j F Y', strtotime($nextWeekDate)) . '</a>';
         echo '</form>';
 
         echo '<div class="schedule-container">';
@@ -97,7 +88,6 @@ class ScheduleView {
             echo '</tr>';
         }
 
-
         echo '</table>';
         echo '</div>';
 
@@ -123,36 +113,6 @@ class ScheduleView {
     private function getWeekStartDate($currentWeekDate) {
         return date('Y-m-d', strtotime('Monday this week', strtotime($currentWeekDate)));
     }
-
-
-    // ScheduleView.php
-    public function displayAvailableRooms($availableRooms) {
-        include 'ButSalles.php';
-    }
-
-
-
-    private function isHourCoveredByRowspan($hour, $eventsByDayAndHour, $day) {
-        foreach ($eventsByDayAndHour[$day] ?? [] as $eventStartHour => $eventsAtHour) {
-            if (!is_array($eventsAtHour)) { // Si ce n'est pas un tableau, c'est probablement marqué comme 'covered'
-                continue;
-            }
-
-            foreach ($eventsAtHour as $event) {
-                if (is_array($event)) {
-                    $eventStart = (int) substr($event['start'], 0, 2);
-                    $eventEnd = (int) substr($event['end'], 0, 2);
-
-                    if ($hour >= $eventStart && $hour < $eventEnd) {
-                        return true;
-                    }
-                }
-            }
-        }
-        return false;
-    }
-
-
 
     public function displayError($message) {
         echo '<p>Error: ' . htmlspecialchars($message) . '</p>';

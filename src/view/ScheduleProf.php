@@ -4,38 +4,24 @@ namespace src\view;
 
 use DateTime;
 
-class ScheduleView {
+class ScheduleProf {
 
     public function displaySchedule($eventsByDayAndHour, $groupName, $currentWeekDate)
     {
         ini_set('display_errors', '0'); // Ne pas afficher les erreurs
-        error_reporting(E_ALL & ~E_DEPRECATED & ~E_WARNING);
-        //error_reporting(E_ALL);
+        //error_reporting(E_ALL & ~E_DEPRECATED & ~E_WARNING);
+        error_reporting(E_ALL);
 
         ob_start();
-
+        // Ajoutez ici le formulaire de navigation
         echo '<form method="GET" action="/index.php">';
         echo '<input type="hidden" name="action" value="navigateWeek">';
         if ($groupName == 'navigateWeek') {
             echo 'navigateWeek ne peut pas etre un group';
         }
-
-
-        $weekStartDate = $this->getWeekStartDate($currentWeekDate);
-
         echo '<input type="hidden" name="group" value="' . htmlspecialchars($groupName) . '">';
-
-        // Calcul des lundis des semaines précédente et suivante
-        $previousWeekDate = date('Y-m-d', strtotime('last monday', strtotime( $weekStartDate)));
-        $nextWeekDate = date('Y-m-d', strtotime('next monday', strtotime( $weekStartDate)));
-
-        // Bouton et date pour la semaine précédente
-        echo '<button type="submit" name="week" value="prevWeek" class="navigation-button">Semaine précédente : </button>';
-        echo '<span style="margin-left: 10px;">' . date('j F Y', strtotime($previousWeekDate)) . '</span>';
-
-        // Bouton et date pour la semaine suivante
-        echo '<button type="submit" name="week" value="nextWeek" class="navigation-button" style="margin-left: 30px;">Semaine suivante : </button>';
-        echo '<span style="margin-left: 10px;">' . date('j F Y', strtotime($nextWeekDate)) . '</span>';
+        echo '<button type="submit" name="week" value="prevWeek" class="navigation-button">Semaine précédente</button>';
+        echo '<button type="submit" name="week" value="nextWeek" class="navigation-button">Semaine suivante</button>';
 
         echo '</form>';
 
@@ -63,30 +49,26 @@ class ScheduleView {
             foreach ($daysOfWeek as $day) {
                 $hourKey = str_pad($hour, 2, '0', STR_PAD_LEFT);
 
-                if (!empty($eventsByDayAndHour[$day][$hourKey])) {
+                // Vérifiez si des événements sont prévus pour cette heure et ce jour
+                if (isset($eventsByDayAndHour[$day][$hourKey]) && !empty($eventsByDayAndHour[$day][$hourKey])) {
                     $eventsAtHour = $eventsByDayAndHour[$day][$hourKey];
+                    $totalEvents = count($eventsAtHour);
 
-                    // Affichage de la cellule principale
+                    // Création de la cellule qui contiendra tous les événements
                     echo '<td class="schedule-day">';
+                    echo '<div style="display: flex; width: 100%; height: 100%;">';
 
-                    // Utilisation d'un tableau imbriqué pour les sous-événements
-                    echo '<table class="inner-table">';
-
+                    // Boucle sur chaque événement pour cette heure et ce jour
                     foreach ($eventsAtHour as $event) {
-                        $rowspan = $event['rowspan'];
-
-                        // Création d'une rangée pour chaque sous-événement
-                        echo '<tr>';
-                        echo '<td rowspan="' . $rowspan . '" style="border: 1px solid #ddd; padding: 5px; margin: 2px;">';
-                        // Affichage de l'événement
-                        echo htmlspecialchars($event['start'] . ' - ' . $event['end'] . ' : ' . $event['summary']) . '<br>';
+                        // Affichage de chaque événement dans sa propre sous-cellule
+                        echo '<div style="flex: 1; border: 1px solid #ddd; padding: 5px; margin: 2px;">';
+                        echo htmlspecialchars($event['start'] . ' - ' . $event['end'] . ': ' . $event['summary']) . '<br>';
                         echo htmlspecialchars($event['location']) . '<br>';
                         echo htmlspecialchars($event['description']);
-                        echo '</td>';
-                        echo '</tr>';
+                        echo '</div>';
                     }
 
-                    echo '</table>';
+                    echo '</div>';
                     echo '</td>';
                 } else {
                     // Affiche une cellule vide si aucun événement
@@ -96,6 +78,10 @@ class ScheduleView {
 
             echo '</tr>';
         }
+
+
+
+
 
 
         echo '</table>';
@@ -119,12 +105,6 @@ class ScheduleView {
 
         return $weekDates;
     }
-
-    private function getWeekStartDate($currentWeekDate) {
-        return date('Y-m-d', strtotime('Monday this week', strtotime($currentWeekDate)));
-    }
-
-
     // ScheduleView.php
     public function displayAvailableRooms($availableRooms) {
         include 'ButSalles.php';
@@ -139,7 +119,7 @@ class ScheduleView {
             }
 
             foreach ($eventsAtHour as $event) {
-                if (is_array($event)) {
+                if (is_array($event)) { // S'assurer que c'est bien un événement et non un marqueur 'covered'
                     $eventStart = (int) substr($event['start'], 0, 2);
                     $eventEnd = (int) substr($event['end'], 0, 2);
 

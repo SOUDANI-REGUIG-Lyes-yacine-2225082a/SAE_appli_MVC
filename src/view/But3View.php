@@ -19,7 +19,7 @@
     <img id="image_GB" src="../../_assets/images/B2GB.png">
 </a>
 <a href="index.php?group=BUT3ga2">
-<img id="image_GA2" src="../../_assets/images/B2GA2.png">
+    <img id="image_GA2" src="../../_assets/images/B2GA2.png">
 </a>
 
 <a  href="index.php?group=roueDeChoix" >

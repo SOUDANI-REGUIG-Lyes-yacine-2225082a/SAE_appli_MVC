@@ -9,9 +9,13 @@ use src\controller\choixRoueController;
 use src\controller\choixBUT3Controller;
 use src\controller\choixBUT1Controller;
 use src\controller\choixBUT2Controller;
+use src\controller\ProfesseurController;
+use src\controller\ScheduleController;
 
+    ini_set('display_errors', '0'); // Ne pas afficher les erreurs
+    error_reporting(E_ALL & ~E_DEPRECATED & ~E_WARNING);
     $router = new Router();
-// Ajoutez les routes ici
+    // Ajoutez les routes ici
     $router->addRoute('home', HomeController::class, 'displayHome');
     $router->addRoute('roueDeChoix', choixRoueController::class, 'displayRoue');
     $router->addRoute('but1', choixRoueController::class, 'displayBut1');
@@ -29,15 +33,23 @@ use src\controller\choixBUT2Controller;
     $router->addRoute('BUT2ga2', choixBUT2Controller::class, 'displayBut2GA2');
     $router->addRoute('BUT2gb', choixBUT2Controller::class, 'displayBut2GB');
 
+
     $router->addRoute('BUT3Annee', choixBUT3Controller::class, 'displayBut3Entier');
     $router->addRoute('BUT3ga1', choixBUT3Controller::class, 'displayBut3GA1');
     $router->addRoute('BUT3ga2', choixBUT3Controller::class, 'displayBut3GA2');
     $router->addRoute('BUT3gb', choixBUT3Controller::class, 'displayBut3GB');
 
     $router->addRoute('salles', choixRoueController::class, 'displaySalles');
+    $router->addRoute('sallesDisponibles', ScheduleController::class, 'showAvailableRooms');
 
-    $router->addRoute('ButEnseignant', choixRoueController::class, 'displayButEnseignant');
+
+    $router->addRoute('ButEnseignant', ProfesseurController::class, 'index');
+
 
     $group = $_GET['group'] ?? 'home'; // 'home' est le group par défaut
     $router->dispatch($group);
+
+
+
+
 ?>

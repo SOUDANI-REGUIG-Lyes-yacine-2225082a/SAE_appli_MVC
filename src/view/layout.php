@@ -12,9 +12,9 @@
 </head>
 <body>
 
-<!-- PHP content -->
+
 <?php
-echo $content;
+echo $content; //l'erreur est normal
 ?>
 
 

@@ -42,10 +42,9 @@ class choixRoueController
     public function displayBut3() {
         include "src/view/But3View.php";
     }
-    public function displaySalles(){
+    public function showAvailableRooms(){
         include "src/view/ButSalles.php";
     }
-
     public function displayButEnseignant(){
         include "src/view/ButEnseignant.php";
     }

@@ -13,7 +13,7 @@
 
 <img id="image_up" src="../../../_assets/images/BUT1_Up.png">
 <a href="index.php?group=BUT1g1">
-<img id="G1" src="../../../_assets/images/B1G1b.png">
+<img id="G1" src="../../../_assets/images/B1G1.png">
 </a>
 <a href="index.php?group=BUT1g2">
 <img id="G2" src="../../../_assets/images/B1G2b.png">
