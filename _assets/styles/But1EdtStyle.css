@@ -8,17 +8,17 @@
     .container {
         width: 95%;
     }
-    /* Autres styles spécifiques mobiles */
+
 }
 
 /* Pour les tablettes */
 @media (min-width: 601px) and (max-width: 1024px) {
-    /* Styles spécifiques aux tablettes */
+
 }
 
 /* Pour les ordinateurs de bureau */
 @media (min-width: 1025px) {
-    /* Styles spécifiques aux ordinateurs de bureau */
+
 }
 
 body, html {
@@ -38,35 +38,35 @@ body, html {
     width: 20px;
     height: auto;
     position: absolute; /* Ajout de la position absolue pour utiliser la propriété left */
-    left: 365px; /* Décalage de 600 pixels vers la droite */
+    left: 365px;
     top: -2px;
 }
 #G1{
     width: 85px;
     height: auto;
     position: absolute; /* Ajout de la position absolue pour utiliser la propriété left */
-    left: 535px; /* Décalage de 600 pixels vers la droite */
+    left: 535px;
     top: -2px;
 }
 #G2{
     width: 85px;
     height: auto;
     position: absolute; /* Ajout de la position absolue pour utiliser la propriété left */
-    left: 665px; /* Décalage de 600 pixels vers la droite */
+    left: 665px;
     top: -1px;
 }
 #G3{
     width: 85px;
     height: auto;
     position: absolute; /* Ajout de la position absolue pour utiliser la propriété left */
-    left: 795px; /* Décalage de 600 pixels vers la droite */
+    left: 795px;
 }
 #G4{
     width: 87px;
     height: auto;
     top: -4px;
     position: absolute; /* Ajout de la position absolue pour utiliser la propriété left */
-    left: 915px; /* Décalage de 600 pixels vers la droite */
+    left: 915px;
 }
 #return {
     width: 90px;

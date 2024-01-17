@@ -18,7 +18,7 @@
 #retour {
     position: fixed;
     top: 350px;
-    left: 835px;
+    left: 935px;
     transform: translate(-50%, -50%);
 }
 
@@ -26,7 +26,7 @@
     width: 195px;
     height: auto;
     position: fixed; /* Ajout de la position absolue pour utiliser la propriété left */
-    left: 835px; /* Décalage de 600 pixels vers la droite */
+    left: 935px; /* Décalage de 600 pixels vers la droite */
     top: 135px;
     transform: translate(-50%, -50%);
 }
@@ -35,7 +35,7 @@
     width: 185px;
     height: auto;
     position: fixed; /* Ajout de la position absolue pour utiliser la propriété left */
-    left: 605px; /* Décalage de 600 pixels vers la droite */
+    left: 705px; /* Décalage de 600 pixels vers la droite */
     top: 320px;
     transform: translate(-50%, -50%);
 }
@@ -44,7 +44,7 @@
     width: 155px;
     height: auto;
     position: fixed; /* Ajout de la position absolue pour utiliser la propriété left */
-    left: 665px; /* Décalage de 600 pixels vers la droite */
+    left: 765px; /* Décalage de 600 pixels vers la droite */
     top: 540px;
     transform: translate(-50%, -50%);
 }
@@ -52,7 +52,7 @@
     width: 175px;
     height: auto;
     position: fixed; /* Ajout de la position absolue pour utiliser la propriété left */
-    left: 935px; /* Décalage de 600 pixels vers la droite */
+    left: 1035px; /* Décalage de 600 pixels vers la droite */
     top: 545px;
     transform: translate(-50%, -50%);
 
@@ -61,7 +61,7 @@
     width: 175px;
     height: auto;
     position: fixed; /* Ajout de la position absolue pour utiliser la propriété left */
-    left: 1055px; /* Décalage de 600 pixels vers la droite */
+    left: 1155px; /* Décalage de 600 pixels vers la droite */
     top: 320px;
     transform: translate(-50%, -50%);
 }
