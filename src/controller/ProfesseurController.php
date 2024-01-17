@@ -3,17 +3,30 @@
 namespace src\controller;
 
 use src\model\ProfModel;
-include 'src/view/ButEnseignant.php';
+use src\view\ScheduleView;
+use src\model\EventModel;
+use src\controller\BaseScheduleController;
+
 
 class ProfesseurController
 {
     private ProfModel $model;
+    private ScheduleView $view;
 
-    public function __construct() {
+    private EventModel $eventModel;
+
+    private BaseScheduleController $controller;
+
+    public function __construct()
+    {
         $this->model = new ProfModel();
+        $this->view = new ScheduleView();
+        $this->eventModel = new EventModel();
+        $this->controller = new BaseScheduleController();
     }
 
-    public function ajouter() {
+    public function ajouter()
+    {
         $nom = $_POST['profName'] ?? '';
         $id = $_POST['profId'] ?? '';
 
@@ -25,7 +38,8 @@ class ProfesseurController
         }
     }
 
-    public function index() {
+    public function index()
+    {
         $message = '';
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -45,28 +59,13 @@ class ProfesseurController
 
         $professeurs = $this->model->getListeProfesseurs();
         $profResourceIds = $this->model->profResourceIds;
-
-
         include 'src/view/ButEnseignant.php';
+
     }
 
-    public function emploiDuTemps() {
-        $profName = $_GET['profName'] ?? '';
-        if (!$profName || !isset($this->model->profResourceIds[$profName])) {
-            echo "Professeur non trouvé";
-            return;
-        }
-
-        $ids = $this->model->profResourceIds[$profName];
-        $events = $this->model->retrieveIcs($ids, '2024-01-01', '2024-12-31');
-
-        // Affichage de l'emploi du temps
-        $scheduleView = new \src\view\ScheduleView();
-        $scheduleView->displaySchedule($events, $profName);
+    public function displayEnseigant()
+    {
+        include 'src/view/EdtProf.php';
+        $this->controller->displayGroupSchedule2();
     }
-
-
-
-
-
 }

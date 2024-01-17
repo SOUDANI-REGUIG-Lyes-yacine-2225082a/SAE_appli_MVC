@@ -9,19 +9,19 @@ class ProfModel
     private $baseUrl = "https://ade-web-consult.univ-amu.fr/jsp/custom/modules/plannings/anonymous_cal.jsp";
     private $projectId = 8; // projectId fixe
     public $profResourceIds = [
-        'Alain Casali' => [133241,144299,72019],
+        'Casali' => "133241,144299,72019",
+        'Makssoud' => 72976
 
     ];
     private $events = [];
 
-    public function generateIcsUrl($identifier, $firstDate, $lastDate, $isProf = false) {
-        $resourceIds = $isProf ? $this->profResourceIds : $this->groupResourceIds;
+    public function generateIcsUrl($identifier, $firstDate, $lastDate) {
 
         if (!isset($resourceIds[$identifier])) {
             throw new \Exception("Resource ID not found for: " . $identifier);
         }
 
-        $resourceId = $resourceIds[$identifier];
+        $resourceId = $this->profResourceIds[$identifier];
 
         $queryParams = http_build_query([
             'projectId' => $this->projectId,
@@ -30,7 +30,9 @@ class ProfModel
             'firstDate' => $firstDate,
             'lastDate' => $lastDate
         ]);
+
         return $this->baseUrl . '?' . $queryParams;
+
     }
 
 
@@ -94,19 +96,17 @@ class ProfModel
         $this->occupiedRooms[$dayOfWeek][$location][] = ['start' => $startTime, 'end' => $endTime];
     }
 
-    public function retrieveIcs($ids, $firstDate, $lastDate) {
+    public function retrieveIcs($resourceId, $firstDate, $lastDate) {
         $this->events = [];
-        foreach ($ids as $id) {
-            try {
-                $url = $this->generateIcsUrl($id, $firstDate, $lastDate);
-                if (!is_string($url)) {
-                    throw new Exception("L'URL générée n'est pas une chaîne valide.");
-                }
-                // Récupérer le contenu ICS à partir de l'URL
-                $this->recupIcs($url);
-            } catch (Exception $e) {
-                echo "Erreur pour le resourceId $id: " . $e->getMessage() . "\n";
+        try {
+            $url = $this->generateIcsUrl($resourceId, $firstDate, $lastDate);
+            if (!is_string($url)) {
+                throw new Exception("L'URL générée n'est pas une chaîne valide.");
             }
+            // Récupérer le contenu ICS à partir de l'URL
+            $this->recupIcs($url);
+        } catch (Exception $e) {
+            echo "Erreur pour le resourceId $resourceId: " . $e->getMessage() . "\n";
         }
         return $this->events;
     }

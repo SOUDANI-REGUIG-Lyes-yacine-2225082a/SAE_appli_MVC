@@ -26,7 +26,13 @@ class EventModel
         'BUT3gb'    => 45225,
         'BUT3Annee' => 8408,
 
-        'TousLesGroupesPourLesSalles' => 6432
+        'TousLesGroupesPourLesSalles' => 6432,
+
+        'Casali' => "133241,144299,72019",
+        'Makssoud' => 72976
+
+
+
     ];
     private $allRooms = [
         "TD I-206", "TD I-205", "TD I-207", "TD I-208", "TD I-209", "TD I-212", "TD I-211", "TD I-214",

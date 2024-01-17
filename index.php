@@ -40,10 +40,14 @@ use src\controller\ScheduleController;
     $router->addRoute('salles', choixRoueController::class, 'displaySalles');
     $router->addRoute('sallesDisponibles', ScheduleController::class, 'showAvailableRooms');
 
+
     $router->addRoute('ButEnseignant', ProfesseurController::class, 'index');
     $router->addRoute('professeur_liste', ProfesseurController::class, 'lister');
     $router->addRoute('professeur_ajouter', ProfesseurController::class, 'ajouter');
     $router->addRoute('professeur_emploi_du_temps', ProfesseurController::class, 'emploiDuTemps');
+
+    $router->addRoute('Casali', ProfesseurController::class, 'displayEnseigant');
+    $router->addRoute('Makssoud', ProfesseurController::class, 'displayEnseigant');
 
 
     $group = $_GET['group'] ?? 'home'; // 'home' est le group par défaut

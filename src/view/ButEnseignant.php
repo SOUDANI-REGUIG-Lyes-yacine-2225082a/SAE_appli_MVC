@@ -31,6 +31,7 @@
         </div>
     </form>
 </section>
+
 <section id="liste-professeurs">
     <h2>Liste des Professeurs</h2>
     <?php if (empty($professeurs)): ?>
@@ -39,9 +40,9 @@
         <ul>
             <?php foreach ($professeurs as $profName): ?>
                 <li>
-                    <a href="index.php?controller=professeur&action=emploiDuTemps&profName=<?= urlencode($profName) ?>">                        <?= htmlspecialchars($profName) ?>
+                    <a href="index.php?group=<?= $profName ?>">
+                        <?= htmlspecialchars($profName) ?>
                     </a>
-                    (ID: <?= implode(', ', $profResourceIds[$profName]) ?>)
                 </li>
             <?php endforeach; ?>
         </ul>
