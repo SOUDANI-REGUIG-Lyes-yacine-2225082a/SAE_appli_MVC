@@ -46,6 +46,24 @@ class ProfesseurController
     }
 
 
+    public function supprimer() {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $nom = $_POST['profName'] ?? '';
+
+            if (!empty($nom)) {
+                if ($this->model->supprimerProfesseur($nom)) {
+                    $message = "Professeur supprimé avec succès.";
+                } else {
+                    $message = "Erreur lors de la suppression du professeur.";
+                }
+            } else {
+                $message = "Nom du professeur non spécifié.";
+            }
+        }
+        $this->index($message); // Revenir à la liste des professeurs
+    }
+
+
     //ajouter professeur, fonction nommé 'index' je sais pas pourquoi trop tard pour changer
     public function index() {
         $message = '';
@@ -101,7 +119,7 @@ class ProfesseurController
 
     public function displayEnseignant()
     {
-        include 'src/view/EdtProf.php';
+
         $profName = $_GET['profName'] ?? '';
 
         if (!$profName) {

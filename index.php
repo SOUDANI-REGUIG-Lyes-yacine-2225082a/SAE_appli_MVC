@@ -42,7 +42,6 @@ use src\controller\ScheduleController;
 
 
     $router->addRoute('ButEnseignant', ProfesseurController::class, 'index');
-    $router->addRoute('professeur', ProfesseurController::class, 'displayEnseignant');
 
 
     $group = $_GET['group'] ?? 'home'; // 'home' est le group par défaut

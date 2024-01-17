@@ -8,6 +8,10 @@ class Router {
     }
 
     public function dispatch($group) {
+        if ($_GET['group'] == 'supprimer') {
+            $controller = new ProfesseurController();
+            $controller->supprimer();
+        }
         if ($group === 'professeur') {
             $controller = new ProfesseurController();
             $controller->displayEnseignant();

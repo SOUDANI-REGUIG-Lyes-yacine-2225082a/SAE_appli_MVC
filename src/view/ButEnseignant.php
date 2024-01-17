@@ -44,6 +44,11 @@
                     <a href="index.php?group=professeur&profName=<?= urlencode($profName) ?>">
                         <?= htmlspecialchars($profName) ?>
                     </a>
+                    <!-- Bouton de suppression -->
+                    <form action="index.php?group=supprimer" method="post" style="display: inline;">
+                        <input type="hidden" name="profName" value="<?= htmlspecialchars($profName) ?>">
+                        <input type="submit" value="Supprimer">
+                    </form>
                 </li>
             <?php endforeach; ?>
         </ul>

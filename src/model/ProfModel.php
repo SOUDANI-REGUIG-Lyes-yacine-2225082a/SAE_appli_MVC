@@ -23,6 +23,21 @@ class ProfModel
 
     }
 
+    public function supprimerProfesseur($nom) {
+        if (!array_key_exists($nom, $this->profResourceIds)) {
+            return false;
+        }
+
+        unset($this->profResourceIds[$nom]);
+        $this->saveProfessors();
+        return true;
+    }
+
+    private function saveProfessors() {
+        $filePath = 'listeProf.json';
+        $jsonData = json_encode($this->profResourceIds);
+        file_put_contents($filePath, $jsonData);
+    }
     private function loadProfessors() {
         $filePath = 'listeProf.json'; // Chemin vers le fichier JSON
 
@@ -165,14 +180,7 @@ class ProfModel
     public function getListeProfesseurs() {
         return array_keys($this->profResourceIds);
     }
-    public function ajouterProfesseur($nom, $id) {
-        if (array_key_exists($nom, $this->profResourceIds)) {
-            return false; // Le professeur existe déjà
-        }
-        $this->profResourceIds[$nom] = $id;
-        $this->controller->saveProfessors(); // Enregistrer dans le fichier JSON
-        return true;
-    }
+
 
 }
 
