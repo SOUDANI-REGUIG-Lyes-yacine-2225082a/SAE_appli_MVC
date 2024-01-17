@@ -9,8 +9,6 @@ use src\controller\choixRoueController;
 use src\controller\choixBUT3Controller;
 use src\controller\choixBUT1Controller;
 use src\controller\choixBUT2Controller;
-use src\controller\ProfesseurController;
-use src\controller\ScheduleController;
 
     $router = new Router();
 // Ajoutez les routes ici
@@ -31,23 +29,15 @@ use src\controller\ScheduleController;
     $router->addRoute('BUT2ga2', choixBUT2Controller::class, 'displayBut2GA2');
     $router->addRoute('BUT2gb', choixBUT2Controller::class, 'displayBut2GB');
 
-
     $router->addRoute('BUT3Annee', choixBUT3Controller::class, 'displayBut3Entier');
     $router->addRoute('BUT3ga1', choixBUT3Controller::class, 'displayBut3GA1');
     $router->addRoute('BUT3ga2', choixBUT3Controller::class, 'displayBut3GA2');
     $router->addRoute('BUT3gb', choixBUT3Controller::class, 'displayBut3GB');
 
     $router->addRoute('salles', choixRoueController::class, 'displaySalles');
-    $router->addRoute('sallesDisponibles', ScheduleController::class, 'showAvailableRooms');
 
-
-    $router->addRoute('ButEnseignant', ProfesseurController::class, 'index');
-
+    $router->addRoute('ButEnseignant', choixRoueController::class, 'displayButEnseignant');
 
     $group = $_GET['group'] ?? 'home'; // 'home' est le group par défaut
     $router->dispatch($group);
-
-
-
-
 ?>

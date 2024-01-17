@@ -6,7 +6,6 @@ class choixBUT3Controller extends  BaseScheduleController {
         include "src/view/BUT3/But3GB.php";
         $this->displayGroupSchedule2();
     }
-
     public function displayBut3GA1(){
         include "src/view/BUT3/But3GA1.php";
         $this->displayGroupSchedule2();

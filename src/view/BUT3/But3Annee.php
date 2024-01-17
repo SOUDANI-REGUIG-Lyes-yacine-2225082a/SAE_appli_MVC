@@ -12,13 +12,13 @@
     <img id="image_up" src="../../../_assets/images/BUT1_Up.png">
 </a>
 <a href="index.php?group=BUT2ga1">
-    <img id="GA1" src="../../../_assets/images/B2GA2.png">
+    <img id="GA1" src="../../../_assets/images/B2GA2b.png">
 </a>
 <a href="index.php?group=BUT2ga2">
-    <img id="GA2" src="../../../_assets/images/B2GA2.png">
+    <img id="GA2" src="../../../_assets/images/B2GA2b.png">
 </a>
 <a href="index.php?group=BUT2gb">
-    <img id="GB" src="../../../_assets/images/B2GB.png">
+    <img id="GB" src="../../../_assets/images/B2GBb.png">
 </a>
 <a  href="index.php?group=roueDeChoix" >
     <img id="return" src="../../../_assets/images/return.png">

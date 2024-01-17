@@ -16,7 +16,7 @@
 <div class="container">
     <div class="wrapper">
         <svg width="1200" height="200">
-            <text x="50%" y="40%" dy=".35em" text-anchor="middle" font-size="20" id="displayText">
+            <text x="60%" y="40%" dy=".35em" text-anchor="middle" font-size="20" id="displayText">
                 Bienvenue au département
                 <tspan x="50%" dy="1.2em">Informatique</tspan>
             </text>

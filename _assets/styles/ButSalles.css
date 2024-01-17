@@ -6,7 +6,6 @@
     left: 600px;
     top: 320px;
 }
-
 .square {
     width: 200px;
     height: 200px;
@@ -16,7 +15,6 @@
     margin: 20px;
     position: relative;
 }
-
 .flip-card {
     perspective: 1000px;
 }
@@ -40,5 +38,3 @@
 .flip-card-back {
     transform: rotateY(180deg);
 }
-
-

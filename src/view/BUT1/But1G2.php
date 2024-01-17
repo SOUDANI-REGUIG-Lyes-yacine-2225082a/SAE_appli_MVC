@@ -9,8 +9,7 @@
 </head>
 <body>
 <div class="container">
-    <img id="image_up" src="../../../_assets
-    /images/B1G2_Up.png">
+    <img id="image_up" src="../../../_assets/images/B1G2_Up.png">
 </div>
 <a  href="index.php?group=but1" >
     <img id="return" src="../../../_assets/images/return.png">

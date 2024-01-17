@@ -21,12 +21,10 @@ class choixBUT1Controller extends BaseScheduleController {
      *
      * @return void
      */
-
     public function displayBut1G1(){
         include "src/view/BUT1/But1G1.php";
         $this->displayGroupSchedule2();
     }
-
 
     /**
      * Affiche la vue But1G2.
