@@ -42,12 +42,6 @@ use src\controller\ScheduleController;
 
 
     $router->addRoute('ButEnseignant', ProfesseurController::class, 'index');
-    $router->addRoute('professeur_liste', ProfesseurController::class, 'lister');
-    $router->addRoute('professeur_ajouter', ProfesseurController::class, 'ajouter');
-    $router->addRoute('professeur_emploi_du_temps', ProfesseurController::class, 'emploiDuTemps');
-
-    //$router->addRoute('Casali', ProfesseurController::class, 'displayEnseignant');
-    //$router->addRoute('Makssoud', ProfesseurController::class, 'displayEnseignant');
     $router->addRoute('professeur', ProfesseurController::class, 'displayEnseignant');
 
 

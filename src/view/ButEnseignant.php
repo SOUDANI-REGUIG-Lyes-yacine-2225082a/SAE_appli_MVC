@@ -17,8 +17,9 @@
 <section id="ajout-professeur">
     <p>Debug ID: <?=uniqid()?></p>
     <h1>Ajouter un Professeur</h1>
-    <form action="index.php?group=ajouter" method="post">
-        <div class="form-group">
+    <form action="index.php?group=ButEnseignant" method="post">
+
+    <div class="form-group">
             <label for="profName">Nom du Professeur:</label>
             <input type="text" id="profName" name="profName" required>
         </div>

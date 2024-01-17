@@ -15,14 +15,18 @@ class ProfesseurController
 
     private EventModel $eventModel;
 
+
+
     private BaseScheduleController $controller;
-    private $profResourceIds;
+    private $profResourceIds = [];
+    private string $filePath = 'listeProf.json';
 
     public function __construct()
     {
         $this->model = new ProfModel();
         $this->view = new ScheduleProfView();
         $this->eventModel = new EventModel();
+
         $this->controller = new BaseScheduleController();
         $this->loadProfessors();
     }
@@ -34,13 +38,15 @@ class ProfesseurController
         if (!empty($nom) && !empty($id)) {
             $this->profResourceIds[$nom] = $id;
             $this->saveProfessors();
-            header("Location: index.php?controller=professeur&action=index");
+            header("Location: index.php?group=ButEnseignant");
             exit();
         } else {
             echo "Erreur lors de l'ajout du professeur.";
         }
     }
 
+
+    //ajouter professeur, fonction nommé 'index' je sais pas pourquoi trop tard pour changer
     public function index() {
         $message = '';
 
@@ -61,6 +67,8 @@ class ProfesseurController
                     $message = "Professeur ajouté avec succès.";
                 }
             }
+
+
         }
 
         // Charger la liste des professeurs à partir du fichier JSON
@@ -84,6 +92,10 @@ class ProfesseurController
         $filePath = 'listeProf.json';
         $jsonData = json_encode($this->profResourceIds);
         file_put_contents($filePath, $jsonData);
+    }
+
+    public function getListeProfesseurs() {
+        return array_keys($this->profResourceIds);
     }
 
 
@@ -123,11 +135,11 @@ class ProfesseurController
 
 
         // Récupérer et afficher l'emploi du temps
-        $events = $this->eventModel->retrieveIcs($profName, $firstDate, $lastDate);
+        $events = $this->model->retrieveIcs($profName, $firstDate, $lastDate);
 
         //$eventsByDayAndHour = $this->eventModel->getEventsStructuredByDayAndHour();
 
-        //error_log("EVENTS : " . print_r($events, true));
+        error_log("EVENTS : " . print_r($events, true));
         $this->view->displaySchedule($events, $profName, $currentWeek);
     }
 }

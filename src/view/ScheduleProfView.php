@@ -121,36 +121,6 @@ class ScheduleProfView {
         return date('Y-m-d', strtotime('Monday this week', strtotime($currentWeekDate)));
     }
 
-
-    // ScheduleView.php
-    public function displayAvailableRooms($availableRooms) {
-        include 'ButSalles.php';
-    }
-
-
-
-    private function isHourCoveredByRowspan($hour, $eventsByDayAndHour, $day) {
-        foreach ($eventsByDayAndHour[$day] ?? [] as $eventStartHour => $eventsAtHour) {
-            if (!is_array($eventsAtHour)) { // Si ce n'est pas un tableau, c'est probablement marqué comme 'covered'
-                continue;
-            }
-
-            foreach ($eventsAtHour as $event) {
-                if (is_array($event)) { // S'assurer que c'est bien un événement et non un marqueur 'covered'
-                    $eventStart = (int) substr($event['start'], 0, 2);
-                    $eventEnd = (int) substr($event['end'], 0, 2);
-
-                    if ($hour >= $eventStart && $hour < $eventEnd) {
-                        return true;
-                    }
-                }
-            }
-        }
-        return false;
-    }
-
-
-
     public function displayError($message) {
         echo '<p>Error: ' . htmlspecialchars($message) . '</p>';
     }
