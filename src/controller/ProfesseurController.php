@@ -3,7 +3,7 @@
 namespace src\controller;
 
 use src\model\ProfModel;
-use src\view\ScheduleView;
+use src\view\ScheduleProfView;
 use src\model\EventModel;
 use src\controller\BaseScheduleController;
 
@@ -11,7 +11,7 @@ use src\controller\BaseScheduleController;
 class ProfesseurController
 {
     private ProfModel $model;
-    private ScheduleView $view;
+    private ScheduleProfView $view;
 
     private EventModel $eventModel;
 
@@ -21,7 +21,7 @@ class ProfesseurController
     public function __construct()
     {
         $this->model = new ProfModel();
-        $this->view = new ScheduleView();
+        $this->view = new ScheduleProfView();
         $this->eventModel = new EventModel();
         $this->controller = new BaseScheduleController();
         $this->loadProfessors();
@@ -121,9 +121,7 @@ class ProfesseurController
         $firstDate = $weekDates['firstDate'];
         $lastDate = $weekDates['lastDate'];
 
-        echo $firstDate;
-        echo " / ";
-        echo $lastDate;
+
         // Récupérer et afficher l'emploi du temps
         $events = $this->eventModel->retrieveIcs($profName, $firstDate, $lastDate);
 
@@ -131,6 +129,5 @@ class ProfesseurController
 
         //error_log("EVENTS : " . print_r($events, true));
         $this->view->displaySchedule($events, $profName, $currentWeek);
-
     }
 }

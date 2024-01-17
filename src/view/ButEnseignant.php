@@ -47,6 +47,7 @@
             <?php endforeach; ?>
         </ul>
     <?php endif; ?>
+
 </section>
 </body>
 </html>
