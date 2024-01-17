@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<!-- PHP content -->
+
 <?php
 echo $content;
 ?>

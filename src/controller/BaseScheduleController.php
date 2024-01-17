@@ -62,12 +62,12 @@ class BaseScheduleController {
 
         //$eventsByDayAndHour = $this->eventModel->getEventsStructuredByDayAndHour();
 
-        error_log("EVENTS : " . print_r($events, true));
+        //error_log("EVENTS : " . print_r($events, true));
         $this->scheduleView->displaySchedule($events, $groupName, $currentWeek);
 
     }
 
-    private function getCurrentWeekDates() {
+    public function getCurrentWeekDates() {
         $currentWeek = $_SESSION['currentWeek'] ?? date('Y-m-d');
         $firstDate = date('Y-m-d', strtotime('Monday this week', strtotime($currentWeek)));
         $lastDate = date('Y-m-d', strtotime('Sunday this week', strtotime($currentWeek)));

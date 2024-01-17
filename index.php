@@ -46,8 +46,9 @@ use src\controller\ScheduleController;
     $router->addRoute('professeur_ajouter', ProfesseurController::class, 'ajouter');
     $router->addRoute('professeur_emploi_du_temps', ProfesseurController::class, 'emploiDuTemps');
 
-    $router->addRoute('Casali', ProfesseurController::class, 'displayEnseigant');
-    $router->addRoute('Makssoud', ProfesseurController::class, 'displayEnseigant');
+    //$router->addRoute('Casali', ProfesseurController::class, 'displayEnseignant');
+    //$router->addRoute('Makssoud', ProfesseurController::class, 'displayEnseignant');
+    $router->addRoute('professeur', ProfesseurController::class, 'displayEnseignant');
 
 
     $group = $_GET['group'] ?? 'home'; // 'home' est le group par défaut

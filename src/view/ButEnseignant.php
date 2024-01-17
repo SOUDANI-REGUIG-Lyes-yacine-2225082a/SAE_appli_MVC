@@ -15,9 +15,9 @@
 <body>
 
 <section id="ajout-professeur">
-    <p>Debug ID: <?= uniqid() ?></p>
+    <p>Debug ID: <?=uniqid()?></p>
     <h1>Ajouter un Professeur</h1>
-    <form action="index.php?controller=professeur&action=ajouter" method="post">
+    <form action="index.php?group=ajouter" method="post">
         <div class="form-group">
             <label for="profName">Nom du Professeur:</label>
             <input type="text" id="profName" name="profName" required>
@@ -38,9 +38,9 @@
         <p>Aucun professeur n'est enregistré.</p>
     <?php else: ?>
         <ul>
-            <?php foreach ($professeurs as $profName): ?>
+            <?php foreach ($professeurs as $profName => $profId): ?>
                 <li>
-                    <a href="index.php?group=<?= $profName ?>">
+                    <a href="index.php?group=professeur&profName=<?= urlencode($profName) ?>">
                         <?= htmlspecialchars($profName) ?>
                     </a>
                 </li>

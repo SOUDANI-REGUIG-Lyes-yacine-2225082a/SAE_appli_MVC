@@ -9,7 +9,7 @@ class ProfModel
     private $baseUrl = "https://ade-web-consult.univ-amu.fr/jsp/custom/modules/plannings/anonymous_cal.jsp";
     private $projectId = 8; // projectId fixe
     public $profResourceIds = [
-        'Casali' => "133241,144299,72019",
+        'Casali' => 72019,
         'Makssoud' => 72976
 
     ];
@@ -118,7 +118,7 @@ class ProfModel
             return false;
         }
 
-        $this->profResourceIds[$nom] = (int)$id;
+        $this->profResourceIds[$nom] = $id;
 
         return true;
 
